@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     password:{
       type:DataTypes.STRING,
       allowNull:false,
-      len:[15,75]
+      len:[5,30]
     }
   });
   return Users;
