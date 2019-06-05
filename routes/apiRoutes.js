@@ -1,10 +1,27 @@
 var db = require("../models");
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('1b52f242b6544eddba125c9fb88612e1');
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+  app.get("/api/users", function(req, res) {
+    db.Users.findAll({}).then(function(dbExamples) {
       res.json(dbExamples);
+    });
+  });
+
+  //News API get request
+  app.get("/news", function(req, res) {
+    newsapi.v2.topHeadlines({
+      country: 'us'
+    }).then(response => {
+      console.log(response);
+      /*
+        {
+          status: "ok",
+          articles: [...]
+        }
+      */
     });
   });
 
@@ -21,4 +38,7 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+
 };
+
+
