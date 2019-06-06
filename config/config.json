@@ -2,14 +2,14 @@
   "development": {
     "username": "root",
     "password": "111",
-    "database": "blitz_db",
+    "database": "blitzdb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "testdb",
+    "password": "111",
+    "database": "blitzdb",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false
