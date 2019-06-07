@@ -1,6 +1,7 @@
 var db = require("../models");
 const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('1b52f242b6544eddba125c9fb88612e1');
+var Request = require("request");
 
 module.exports = (app) => {
   // Get all users
@@ -9,7 +10,7 @@ module.exports = (app) => {
       res.json(result);
     });
   });
-
+  
   //get one user by username
   app.get("/api/users/:id", (req, res) => {
     db.Users.findAll({
@@ -20,35 +21,26 @@ module.exports = (app) => {
       res.json(result);
     });
   });
-
+  
   app.post("api/users/:id", (req, res) => {
     db.Users.findOne({}).then((result) => {
       res.json(result);
     });
   });
-
+  
   app.put("api/users/:id", (req, res) => {
     db.Users.findOne({}).then((result) => {
       res.json(result);
     });
   });
-
-  //News API get request
-  app.get("/news", (req, res) => {
-    newsapi.v2.topHeadlines({
-      country: 'us'
-    }).then(response => {
-      res.json(response);
-    });
-  });
-
+  
   // Create a new example
   app.post("/api/examples", (req, res) => {
     db.Example.create(req.body).then((dbExample) => {
       res.json(dbExample);
     });
   });
-
+  
   // Delete an example by id
   app.delete("/api/examples/:id", (req, res) => {
     db.Example.destroy({
@@ -57,9 +49,28 @@ module.exports = (app) => {
       }
     }).then((
       dbExample
-    ) => {
-      res.json(dbExample);
+      ) => {
+        res.json(dbExample);
+      });
     });
-  });
+    
+    //================================================================= EXTERNAL API REQUESTS
+    app.get("/quote", (req,res) => {
+      Request.get("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1", (error, response, body) => {
+          if(error) {
+              return console.dir(error);
+          }
+          console.dir(JSON.parse(body));
+          res.json(response);
+      });
 
+    })
+    //News API get request
+    app.get("/news", (req, res) => {
+      newsapi.v2.topHeadlines({
+        country: 'us'
+      }).then(response => {
+        res.json(response);
+      });
+    });
 };
