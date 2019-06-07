@@ -56,7 +56,7 @@ module.exports = (app) => {
     
     //================================================================= EXTERNAL API REQUESTS
     app.get("/quote", (req,res) => {
-      Request.get("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1", (error, response, body) => {
+      Request.get("http://quotes.stormconsultancy.co.uk/random.json", (error, response, body) => {
           if(error) {
               return console.dir(error);
           }
