@@ -1,9 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var NewsPrefs = sequelize.define("NewsPrefs", {
-    firstName: {
+    countryPref: {
       type: DataTypes.STRING,
-      allowNull: false,
-      len: [1, 50]
+      allowNull: true,
+      defaultValue:"us",
+      len: [1, 50],
     }
   });
   NewsPrefs.associate = function(models) {
