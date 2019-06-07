@@ -1,6 +1,6 @@
 var db = require("../models");
-const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('1b52f242b6544eddba125c9fb88612e1');
+const NewsAPI = require("newsapi");
+const newsapi = new NewsAPI("1b52f242b6544eddba125c9fb88612e1");
 
 module.exports = function(app) {
   // Get all examples
@@ -11,18 +11,21 @@ module.exports = function(app) {
   });
 
   //News API get request
+  // eslint-disable-next-line no-unused-vars
   app.get("/news", function(req, res) {
-    newsapi.v2.topHeadlines({
-      country: 'us'
-    }).then(response => {
-      console.log(response);
-      /*
+    newsapi.v2
+      .topHeadlines({
+        country: "us"
+      })
+      .then(response => {
+        console.log(response);
+        /*
         {
           status: "ok",
           articles: [...]
         }
       */
-    });
+      });
   });
 
   // Create a new example
@@ -40,5 +43,4 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
-
 };
