@@ -4,6 +4,38 @@
       <div class="col-s12">
         <h1>Blitzkreig!</h1>
 
+        <div>
+         {{#each blitzdb}}
+            {{#if weather}}
+              {{> widgets/weather-block }}
+            {{/unless}}
+          {{/each}}
+        </div>
+
+        <div>
+          {{#each blitzdb}}
+            {{#if traffic}}
+              {{> widgets/traffic-block}}
+            {{/if}}
+          {{/each}}
+        </div>
+
+        <div>
+          {{#each blitzdb}}
+            {{#if news}}
+              {{> widgets/news-block}}
+            {{/if}}
+          {{/each}}
+        </div>
+
+        <div>
+          {{#each blitzdb}}
+            {{#if quote}}
+              {{> widgets/quote-block}}
+            {{/if}}
+          {{/each}}
+        </div>
+
       </div>
     </div>
   </div>
