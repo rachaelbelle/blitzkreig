@@ -1,8 +1,7 @@
 var db = require("../models");
-const NewsAPI = require('newsapi');
-const newsapi = new NewsAPI('1b52f242b6544eddba125c9fb88612e1');
-var Request = require("request");
-
+const NewsAPI = require("newsapi");
+const newsapi = new NewsAPI("1b52f242b6544eddba125c9fb88612e1");
+const Request = require("request");
 module.exports = (app) => {
   // Get all users
   app.get("/api/users", (req, res) => {
@@ -10,6 +9,7 @@ module.exports = (app) => {
       res.json(result);
     });
   });
+<<<<<<< HEAD
   
   //get one user by username
   app.get("/api/users/:id", (req, res) => {
@@ -20,6 +20,25 @@ module.exports = (app) => {
     }).then((result) => {
       res.json(result);
     });
+=======
+
+  //News API get request
+  // eslint-disable-next-line no-unused-vars
+  app.get("/news", function(req, res) {
+    newsapi.v2
+      .topHeadlines({
+        country: "us"
+      })
+      .then(response => {
+        console.log(response);
+        /*
+        {
+          status: "ok",
+          articles: [...]
+        }
+      */
+      });
+>>>>>>> 305072e9e06011f55f5996c9c910665259a93016
   });
   
   app.post("api/users/:id", (req, res) => {
@@ -53,6 +72,7 @@ module.exports = (app) => {
         res.json(dbExample);
       });
     });
+<<<<<<< HEAD
     
     //================================================================= EXTERNAL API REQUESTS
     app.get("/quote", (req,res) => {
@@ -74,3 +94,7 @@ module.exports = (app) => {
       });
     });
 };
+=======
+  });
+};
+>>>>>>> 305072e9e06011f55f5996c9c910665259a93016
