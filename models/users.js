@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
       len: [5, 30]
     },
   });
-  // This associates the User to their News preferences
+  // This associates the User to their News preference
   Users.associate = function(models) {
     models.Users.hasOne(models.NewsPrefs, {
       onDelete: "CASCADE",
