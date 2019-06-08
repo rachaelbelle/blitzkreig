@@ -14,7 +14,6 @@ module.exports = function (sequelize, DataTypes) {
   allowNull: true
   }
   });
-<<<<<<< HEAD
   // NewsPrefs.associate = function(models) {
   //   models.NewsPrefs.belongsTo(models.Users, {
   //     onDelete: "CASCADE",
@@ -23,9 +22,6 @@ module.exports = function (sequelize, DataTypes) {
   //     }
   //   });
   // };
-=======
-  };
->>>>>>> f1e8596577af11a9cd8b760f68aa7f0aca032e79
   return NewsPrefs;
   };
   
