@@ -1,6 +1,7 @@
 <div>
-  <form action="action_page.php">
-    <div class="container">
+  <div class="container">
+    <form action="action_page.php">
+
       <h1>Sign up!</h1>
       <p>Please fill in this form to create an account.</p>
       <hr>
@@ -31,55 +32,61 @@
         <label for="zipCode"><b>Zip Code</b></label>
         <input type="number" placeholder="Enter zip code">
       </div>
-      <div class="container">
+      <div class="container switchContainer">
         <!-- Switch Weather -->
         <div class="switch">
+          <span>
+            <p>Weather</p>
+          </span>
           <label>
             Off
             <input type="checkbox">
             <span class="lever"></span>
             On
           </label>
-          <span>
-            <p>Weather</p>
-          </span>
+
           <!-- Switch News -->
           <div class="switch">
+            <span>
+              <p>News</p>
+            </span>
             <label>
               Off
               <input type="checkbox">
               <span class="lever"></span>
               On
             </label>
-            <span>
-              <p>News</p>
-            </span>
+
             <!-- Switch Traffic -->
             <div class="switch">
+              <span>
+                <p>Traffic</p>
+              </span>
               <label>
                 Off
                 <input type="checkbox">
                 <span class="lever"></span>
                 On
               </label>
-              <span>
-                <p>Traffic</p>
-              </span>
+
               <!-- Switch Quotes -->
               <div class="switch">
+                <span>
+                  <p>Quotes</p>
+                </span>
                 <label>
                   Off
                   <input type="checkbox">
                   <span class="lever"></span>
                   On
                 </label>
-                <span>
-                  <p>Quotes</p>
-                </span>
+
               </div>
             </div>
-            <button type="submit" class="registerbtn">Register</button>
-            <div class="container signin">
+            <div>
+            <button type="submit" class="registerbtn btn btn-primary grey darken-4">Register</button>
+            </div>
+            <div class="container float-left signin">
               <p>Already have an account? <a href="#">Sign in</a>.</p>
             </div>
           </div>

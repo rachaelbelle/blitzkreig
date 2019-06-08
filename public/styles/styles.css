@@ -1,3 +1,38 @@
 .list-group-item {
   line-height: 2.5;
 }
+.marker{
+  font-family: 'Permanent Marker', cursive;
+  line-height: 20px;
+}
+.sun{
+  height: 200px;
+}
+.logo{
+  align-items: center;
+  text-align: center;
+}
+.registerbtn{
+  margin: 10px;
+}
+body{
+  font-family: 'Fira Sans Extra Condensed', sans-serif;
+}
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+.col-6{
+  padding:0px !important;
+}
+.switchContainer {
+  margin:0px;
+  padding:0px;
+}
+.switch label input[type=checkbox]:checked+.lever:after {
+  background-color: #616161 !important;
+}
+.switch label input[type=checkbox]:checked+.lever {
+  background-color: #424242 !important;
+}

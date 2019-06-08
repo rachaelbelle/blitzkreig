@@ -9,4 +9,6 @@ cache:
   directories:
     - node_modules
 before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS testdb;'
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS testdb;CREATE USER 'blitz'@'localhost';
+GRANT ALL privileges ON *.* TO 'blitz'@'localhost';
+ALTER USER 'blitz'@'localhost' IDENTIFIED WITH mysql_native_password BY '';'
