@@ -8,6 +8,10 @@
 .sun{
   height: 200px;
 }
+.logo{
+  align-items: center;
+  text-align: center;
+}
 .registerbtn{
   margin: 10px;
 }
@@ -22,18 +26,6 @@ body{
 .col-6{
   padding:0px !important;
 }
-
-.flex-center {
-  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-  display: -ms-flexbox;      /* TWEENER - IE 10 */
-  display: -webkit-flex;     /* NEW - Chrome */
-  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-  align-items: center;
-  -webkit-align-items: center; /* Safari 7.0+ */
-  justify-content: center;
-  -webkit-justify-content: center; /* Safari 6.1+ */
-}
 .switchContainer {
   margin:0px;
   padding:0px;
@@ -44,4 +36,3 @@ body{
 .switch label input[type=checkbox]:checked+.lever {
   background-color: #424242 !important;
 }
-
