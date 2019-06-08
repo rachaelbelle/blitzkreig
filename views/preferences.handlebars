@@ -5,7 +5,7 @@
       <p>Please fill in this form to create an account.</p>
       <hr>
       <div class="row">
-        <div class="col-6">
+        <div class="col-6 firstN">
           <label for="firstName"><b>First Name</b></label>
           <input type="text" placeholder="Enter first name" name="email" id="firstName" required>
         </div>
@@ -13,6 +13,10 @@
           <label for="lastName"><b>Last Name</b></label>
           <input type="text" placeholder="Enter last name" name="email" id="lastName" required>
         </div>
+      </div>
+      <div class="row">
+        <label for="example-username">Username</label>
+          <input type="text" id="example-text username"  placeholder="Enter Username">
       </div>
       <div class="row">
         <label for="email"><b>Email</b></label>
@@ -31,56 +35,62 @@
         <label for="zipCode"><b>Zip Code</b></label>
         <input type="number" placeholder="Enter zip code" id="zipCode">
       </div>
-      <div class="container">
+      <div class="container switchContainer">
         <!-- Switch Weather -->
         <div class="switch">
+          <span>
+            <p>Weather</p>
+          </span>
           <label>
             Off
             <input type="checkbox" id="weatherCb">
             <span class="lever"></span>
             On
           </label>
-          <span>
-            <p>Weather</p>
-          </span>
+
           <!-- Switch News -->
           <div class="switch">
+            <span>
+              <p>News</p>
+            </span>
             <label>
               Off
               <input type="checkbox" id="newsCb">
               <span class="lever"></span>
               On
             </label>
-            <span>
-              <p>News</p>
-            </span>
+
             <!-- Switch Traffic -->
             <div class="switch">
+              <span>
+                <p>Traffic</p>
+              </span>
               <label>
                 Off
                 <input type="checkbox" id="trafficCb">
                 <span class="lever"></span>
                 On
               </label>
-              <span>
-                <p>Traffic</p>
-              </span>
+
               <!-- Switch Quotes -->
               <div class="switch">
+                <span>
+                  <p>Quotes</p>
+                </span>
                 <label>
                   Off
                   <input type="checkbox" id="quotesCb">
                   <span class="lever"></span>
                   On
                 </label>
-                <span>
-                  <p>Quotes</p>
-                </span>
+
               </div>
             </div>
-            <button type="submit" class="registerbtn">Register</button>
-            <div class="container signin">
-              <p>Already have an account? <a href="#">Sign in</a>.</p>
+            <div>
+            <button type="submit" class="registerbtn btn btn-primary grey darken-4">Register</button>
+            </div>
+            <div class="container float-left signin">
+              <p>Already have an account? <a href="/">Sign in</a>.</p>
             </div>
           </div>
   </form>
