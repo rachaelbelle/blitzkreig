@@ -1,12 +1,13 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var NewsPrefs = sequelize.define("NewsPrefs", {
-    firstName: {
+    countryPref: {
       type: DataTypes.STRING,
-      allowNull: false,
-      len: [1, 50]
+      allowNull: true,
+      defaultValue: "us",
+      len: [1, 50],
     }
   });
-  NewsPrefs.associate = function(models) {
+  NewsPrefs.associate = function (models) {
     models.NewsPrefs.belongsTo(models.Users, {
       onDelete: "CASCADE",
       foreignKey: {

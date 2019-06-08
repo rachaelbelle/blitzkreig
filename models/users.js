@@ -10,6 +10,12 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       len: [1, 50]
     },
+    username: {
+      type: DataTypes.STRING,
+      allowNull:false,
+      len: [1,50],
+      uniqiue:'compositeIndex'
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -19,10 +25,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       len: [5, 30]
-    }
+    },
   });
-
-  // This associates the User to their News preferences
+  // This associates the User to their News preference
   Users.associate = function(models) {
     models.Users.hasOne(models.NewsPrefs, {
       onDelete: "CASCADE",
