@@ -23,16 +23,16 @@
 =======
 {
   "development": {
-    "username": "root",
-    "password": "111",
+    "username": "blitz",
+    "password": null,
     "database": "blitzdb",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": "111",
-    "database": "blitzdb",
+    "username": "blitz",
+    "password": null,
+    "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
     "logging": false

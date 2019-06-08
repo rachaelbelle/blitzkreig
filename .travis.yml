@@ -1,7 +1,8 @@
 language: node_js
 node_js: '8'
 install:
-  - npm install mocha -g
+  - npm i -g yarn mocha
+  - yarn
 branches:
   only:
   - master
@@ -10,3 +11,5 @@ cache:
     - node_modules
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS testdb;'
+  - sudo mysql -e 'CREATE USER blitz@localhost;'
+  - sudo mysql -e 'GRANT ALL PRIVILEGES ON *.* TO blitz@localhost;'

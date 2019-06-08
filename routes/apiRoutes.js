@@ -1,4 +1,5 @@
 var db = require("../models");
+<<<<<<< HEAD
 const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("1b52f242b6544eddba125c9fb88612e1");
 const Request = require("request");
@@ -7,6 +8,16 @@ module.exports = (app) => {
   app.get("/api/users", (req, res) => {
     db.Users.findAll({}).then((result) => {
       res.json(result);
+=======
+// const NewsAPI = require("newsapi");
+// const newsapi = new NewsAPI("1b52f242b6544eddba125c9fb88612e1");
+
+module.exports = function(app) {
+  // Get all examples
+  app.get("/api/users", function(req, res) {
+    db.Users.findAll({}).then(function(dbExamples) {
+      res.json(dbExamples);
+>>>>>>> 05ce3d3b757d432da05d8e42d248fcdceaeddf60
     });
   });
 <<<<<<< HEAD
@@ -24,6 +35,7 @@ module.exports = (app) => {
 
   //News API get request
   // eslint-disable-next-line no-unused-vars
+<<<<<<< HEAD
   app.get("/news", function(req, res) {
     newsapi.v2
       .topHeadlines({
@@ -53,13 +65,42 @@ module.exports = (app) => {
     });
   });
   
+=======
+  // app.get("/news", function(req, res) {
+  //   newsapi.v2
+  //     .topHeadlines({
+  //       country: "us"
+  //     })
+  //     .then(response => {
+  //       console.log(response);
+  //       /*
+  //       {
+  //         status: "ok",
+  //         articles: [...]
+  //       }
+  //     */
+  //     });
+  // });
+
+>>>>>>> 05ce3d3b757d432da05d8e42d248fcdceaeddf60
   // Create a new example
   app.post("/api/examples", (req, res) => {
     db.Example.create(req.body).then((dbExample) => {
       res.json(dbExample);
     });
   });
+<<<<<<< HEAD
   
+=======
+
+  app.get("/api/examples", function(req, res) {
+    db.Example.findAll({}).then(function(dbExample) {
+      //console.log(dbExample);
+      res.json(dbExample);
+    });
+  });
+
+>>>>>>> 05ce3d3b757d432da05d8e42d248fcdceaeddf60
   // Delete an example by id
   app.delete("/api/examples/:id", (req, res) => {
     db.Example.destroy({
