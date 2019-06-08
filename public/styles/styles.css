@@ -5,24 +5,16 @@
   font-family: 'Permanent Marker', cursive;
   line-height: 20px;
 }
-.tank{
-  align-content: justify;
+.sun{
   height: 200px;
 }
-.sun{
-  clip-path: circle(85px at center);
-  /* border-radius: 50%; */
-  /* webkit-clip-path: polygon(0 50%, 50% 0, 100% 50%, 50% 100%, 10% 10%); */
-  /* clip-path: polygon(0 50%, 50% 0, 100% 75%, 50% 100%, 10% 10%); */
-  /* vertical-align: top; */
-  /* display: inline-block; */
+.logo{
+  align-items: center;
   text-align: center;
-  height: 200px;
 }
 .registerbtn{
   margin: 10px;
 }
-
 body{
   font-family: 'Fira Sans Extra Condensed', sans-serif;
 }
@@ -31,15 +23,16 @@ body{
     padding-left: 0;
   }
 }
-
-.flex-center {
-  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-  display: -ms-flexbox;      /* TWEENER - IE 10 */
-  display: -webkit-flex;     /* NEW - Chrome */
-  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
-  align-items: center;
-  -webkit-align-items: center; /* Safari 7.0+ */
-  justify-content: center;
-  -webkit-justify-content: center; /* Safari 6.1+ */
+.col-6{
+  padding:0px !important;
+}
+.switchContainer {
+  margin:0px;
+  padding:0px;
+}
+.switch label input[type=checkbox]:checked+.lever:after {
+  background-color: #616161 !important;
+}
+.switch label input[type=checkbox]:checked+.lever {
+  background-color: #424242 !important;
 }
