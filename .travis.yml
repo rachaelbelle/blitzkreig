@@ -3,6 +3,7 @@ node_js: '8'
 install:
   - npm install mocha -g
   - npm install eslint -g
+  - npm i eslint-plugin-prettier@latest --save-dev
 branches:
   only:
   - master
