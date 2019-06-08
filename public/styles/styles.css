@@ -45,7 +45,7 @@ body{
 }
 
 .switch label input[type=checkbox]:checked+.lever:after {
-  background-color: #424242 !important;
+  background-color: #616161 !important;
 }
 .switch label input[type=checkbox]:checked+.lever {
   background-color: #424242 !important;
