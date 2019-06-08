@@ -24,7 +24,10 @@ body{
   }
 }
 .col-6{
-  padding:0px !important;
+  padding: 0px !important;
+}
+.firstN{
+  padding-right: 15px !important;
 }
 .switchContainer {
   margin:0px;
