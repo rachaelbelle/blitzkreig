@@ -1,5 +1,4 @@
 var db = require("../models");
-<<<<<<< HEAD
 const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("1b52f242b6544eddba125c9fb88612e1");
 const Request = require("request");
@@ -8,19 +7,9 @@ module.exports = (app) => {
   app.get("/api/users", (req, res) => {
     db.Users.findAll({}).then((result) => {
       res.json(result);
-=======
-// const NewsAPI = require("newsapi");
-// const newsapi = new NewsAPI("1b52f242b6544eddba125c9fb88612e1");
-
-module.exports = function(app) {
-  // Get all examples
-  app.get("/api/users", function(req, res) {
-    db.Users.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
->>>>>>> 05ce3d3b757d432da05d8e42d248fcdceaeddf60
     });
   });
-<<<<<<< HEAD
+
   
   //get one user by username
   app.get("/api/users/:id", (req, res) => {
@@ -31,11 +20,11 @@ module.exports = function(app) {
     }).then((result) => {
       res.json(result);
     });
-=======
+
 
   //News API get request
   // eslint-disable-next-line no-unused-vars
-<<<<<<< HEAD
+
   app.get("/news", function(req, res) {
     newsapi.v2
       .topHeadlines({
@@ -50,7 +39,7 @@ module.exports = function(app) {
         }
       */
       });
->>>>>>> 305072e9e06011f55f5996c9c910665259a93016
+
   });
   
   app.post("api/users/:id", (req, res) => {
@@ -65,7 +54,7 @@ module.exports = function(app) {
     });
   });
   
-=======
+
   // app.get("/news", function(req, res) {
   //   newsapi.v2
   //     .topHeadlines({
@@ -82,16 +71,13 @@ module.exports = function(app) {
   //     });
   // });
 
->>>>>>> 05ce3d3b757d432da05d8e42d248fcdceaeddf60
+
   // Create a new example
   app.post("/api/examples", (req, res) => {
     db.Example.create(req.body).then((dbExample) => {
       res.json(dbExample);
     });
   });
-<<<<<<< HEAD
-  
-=======
 
   app.get("/api/examples", function(req, res) {
     db.Example.findAll({}).then(function(dbExample) {
@@ -100,7 +86,6 @@ module.exports = function(app) {
     });
   });
 
->>>>>>> 05ce3d3b757d432da05d8e42d248fcdceaeddf60
   // Delete an example by id
   app.delete("/api/examples/:id", (req, res) => {
     db.Example.destroy({
@@ -113,7 +98,6 @@ module.exports = function(app) {
         res.json(dbExample);
       });
     });
-<<<<<<< HEAD
     
     //================================================================= EXTERNAL API REQUESTS
     app.get("/quote", (req,res) => {
@@ -135,7 +119,3 @@ module.exports = function(app) {
       });
     });
 };
-=======
-  });
-};
->>>>>>> 305072e9e06011f55f5996c9c910665259a93016

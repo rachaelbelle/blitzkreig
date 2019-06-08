@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-{
-  "name": "team1Project2",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/rachaelbelle/team1Project2.git",
-  "author": "Austin Smith <austinsmith7531@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "dotenv": "^8.0.0",
-    "express-handlebars": "^3.1.0",
-    "mysql2": "^1.6.5",
-    "newsapi": "^2.4.0",
-    "request": "^2.88.0",
-    "sequelize": "^5.8.7"
-  }
-}
-=======
 {
   "name": "blitzkreig",
   "version": "1.0.0",
@@ -49,4 +31,3 @@
     "prettier": "^1.17.1"
   }
 }
->>>>>>> 05ce3d3b757d432da05d8e42d248fcdceaeddf60
