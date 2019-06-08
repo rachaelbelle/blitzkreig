@@ -10,6 +10,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       len: [1, 50]
     },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      len: [1, 50]
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -19,6 +24,27 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       len: [5, 30]
+    },
+    zipCode: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      len: [5, 5]
+    },
+    weather: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    news: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    traffic: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
+    },
+    quotes: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   });
 
