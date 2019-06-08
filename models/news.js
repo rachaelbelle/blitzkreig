@@ -1,11 +1,20 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var NewsPrefs = sequelize.define("NewsPrefs", {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      len: [1, 50]
-    }
+  countryPref: {
+  type: DataTypes.STRING,
+  allowNull: true,
+  defaultValue: "us",
+  len: [1, 50],
+  }
   });
+  NewsPrefs.associate = function (models) {
+  models.NewsPrefs.belongsTo(models.Users, {
+  onDelete: "CASCADE",
+  foreignKey: {
+  allowNull: true
+  }
+  });
+<<<<<<< HEAD
   // NewsPrefs.associate = function(models) {
   //   models.NewsPrefs.belongsTo(models.Users, {
   //     onDelete: "CASCADE",
@@ -14,5 +23,9 @@ module.exports = function(sequelize, DataTypes) {
   //     }
   //   });
   // };
+=======
+  };
+>>>>>>> f1e8596577af11a9cd8b760f68aa7f0aca032e79
   return NewsPrefs;
-};
+  };
+  
