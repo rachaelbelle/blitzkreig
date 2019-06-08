@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "root",
-    "password": "111",
+    "username": "blitz",
+    "password": null,
     "database": "blitzdb",
     "host": "localhost",
     "dialect": "mysql"
