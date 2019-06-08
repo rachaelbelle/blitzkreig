@@ -5,24 +5,12 @@
   font-family: 'Permanent Marker', cursive;
   line-height: 20px;
 }
-.tank{
-  align-content: justify;
-  height: 200px;
-}
 .sun{
-  clip-path: circle(85px at center);
-  /* border-radius: 50%; */
-  /* webkit-clip-path: polygon(0 50%, 50% 0, 100% 50%, 50% 100%, 10% 10%); */
-  /* clip-path: polygon(0 50%, 50% 0, 100% 75%, 50% 100%, 10% 10%); */
-  /* vertical-align: top; */
-  /* display: inline-block; */
-  text-align: center;
   height: 200px;
 }
 .registerbtn{
   margin: 10px;
 }
-
 body{
   font-family: 'Fira Sans Extra Condensed', sans-serif;
 }
@@ -30,6 +18,9 @@ body{
   header, main, footer {
     padding-left: 0;
   }
+}
+.col-6{
+  padding:0px !important;
 }
 
 .flex-center {
@@ -43,7 +34,10 @@ body{
   justify-content: center;
   -webkit-justify-content: center; /* Safari 6.1+ */
 }
-
+.switchContainer {
+  margin:0px;
+  padding:0px;
+}
 .switch label input[type=checkbox]:checked+.lever:after {
   background-color: #616161 !important;
 }
