@@ -1,5 +1,6 @@
-module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define("Users", {
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const users = sequelize.define("users", {
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -46,16 +47,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       allowNull: false
     }
-  });
-
-  // This associates the User to their News preferences
-  Users.associate = function(models) {
-    models.Users.hasOne(models.NewsPrefs, {
-      onDelete: "CASCADE",
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
-  return Users;
+  }, {});
+  // User.associate = function(models) {
+  //   // associations can be defined here
+  // };
+  return users;
 };

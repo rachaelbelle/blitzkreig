@@ -6,13 +6,13 @@ module.exports = function(sequelize, DataTypes) {
       len: [1, 50]
     }
   });
-  NewsPrefs.associate = function(models) {
-    models.NewsPrefs.belongsTo(models.Users, {
-      onDelete: "CASCADE",
-      foreignKey: {
-        allowNull: true
-      }
-    });
-  };
+  // NewsPrefs.associate = function(models) {
+  //   models.NewsPrefs.belongsTo(models.Users, {
+  //     onDelete: "CASCADE",
+  //     foreignKey: {
+  //       allowNull: true
+  //     }
+  //   });
+  // };
   return NewsPrefs;
 };
