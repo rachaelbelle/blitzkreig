@@ -1,4 +1,3 @@
-$(document).ready
 
 // // Get references to page elements
 // var $exampleText = $("#example-text");
