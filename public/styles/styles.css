@@ -39,3 +39,8 @@ body{
 .switch label input[type=checkbox]:checked+.lever {
   background-color: #424242 !important;
 }
+.profile{
+  border-radius: 50%;
+  height: 75px;
+  margin-left: 50px;
+}

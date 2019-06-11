@@ -10,7 +10,8 @@ $(document).ready(function() {
   var newsCb = $("#newsCb").prop('checked');
   var trafficCb = $("#trafficCb").prop('checked');
   var quotesCb = $("#quotesCb").prop('checked');
-  var cmsForm = $("#cmsForm");
+  // eslint-disable-next-line no-unused-vars
+//   var cmsForm = $("#cms");
   // Adding an event listener for when the form is submitted
   $("#cmsForm").on("submit", handleFormSubmit);
 

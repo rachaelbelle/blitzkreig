@@ -1,8 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
   var NewsPrefs = sequelize.define("NewsPrefs", {
-    firstName: {
+    countryPref: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+      defaultValue: "us",
       len: [1, 50]
     }
   });
@@ -13,6 +14,14 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true
       }
     });
+    // NewsPrefs.associate = function(models) {
+    //   models.NewsPrefs.belongsTo(models.Users, {
+    //     onDelete: "CASCADE",
+    //     foreignKey: {
+    //       allowNull: true
+    //     }
+    //   });
+    // };s
+    return NewsPrefs;
   };
-  return NewsPrefs;
 };
