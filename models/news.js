@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   NewsPrefs.associate = function(models) {
-    models.NewsPrefs.belongsTo(models.Users, {
+    NewsPrefs.belongsTo(models.users, {
       onDelete: "CASCADE",
       foreignKey: {
         allowNull: true
@@ -22,6 +22,6 @@ module.exports = function(sequelize, DataTypes) {
     //     }
     //   });
     // };s
-    return NewsPrefs;
   };
+  return NewsPrefs;
 };
