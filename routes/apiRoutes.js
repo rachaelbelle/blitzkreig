@@ -15,6 +15,8 @@ module.exports = app => {
     console.log(req.body)
     db.users.create(req.body).then(function(dbExample) {
       res.json(dbExample);
+    });
+  });
 
   //get one user by username
   app.get("/api/users/:id", (req, res) => {
@@ -75,6 +77,5 @@ module.exports = app => {
         res.json(response);
       });
   });
-
 
 };
