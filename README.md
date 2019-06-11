@@ -15,7 +15,8 @@ The is a full stack application that is the Jack of All APPs. This app takes all
 * On the user preferences page the user will see his saved preferences he/she chose on sign up.
 * You can click and expand widgets.
 
-
+---------------------------------------------------------------------------------------
+<br>
 
 <kbd>
   <img src="public/images/loginPage.png" width="220"/>
