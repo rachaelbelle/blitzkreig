@@ -1,26 +1,3 @@
-<<<<<<< HEAD
-{
-  "development": {
-    "username": "blitz",
-    "password": null,
-    "database": "blitz_db",
-    "host": "localhost",
-    "dialect": "mysql"
-  },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "testdb",
-    "host": "localhost",
-    "dialect": "mysql",
-    "logging": false
-  },
-  "production": {
-    "use_env_variable": "JAWSDB_URL",
-    "dialect": "mysql"
-  }
-}
-=======
 {
   "development": {
     "username": "blitz",
@@ -42,4 +19,3 @@
     "dialect": "mysql"
   }
 }
->>>>>>> 305072e9e06011f55f5996c9c910665259a93016
