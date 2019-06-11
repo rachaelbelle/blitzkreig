@@ -10,24 +10,6 @@ module.exports = app => {
     });
   });
 
-  //News API get request
-  // eslint-disable-next-line no-unused-vars
-  // app.get("/news", function(req, res) {
-  //   newsapi.v2
-  //     .topHeadlines({
-  //       country: "us"
-  //     })
-  //     .then(response => {
-  //       console.log(response);
-  //       /*
-  //       {
-  //         status: "ok",
-  //         articles: [...]
-  //       }
-  //     */
-  //     });
-  // });
-
   // Create a new user
   app.post("/api/users", function(req, res) {
     console.log(req.body)
