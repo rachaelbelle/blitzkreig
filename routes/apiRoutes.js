@@ -5,7 +5,7 @@ const Request = require("request");
 module.exports = app => {
   // Get all users
   app.get("/api/users", (req, res) => {
-    db.Users.findAll({}).then(result => {
+    db.users.findAll({}).then(result => {
       res.json(result);
     });
   });
@@ -28,15 +28,15 @@ module.exports = app => {
   //     });
   // });
 
-  // Create a new example
+  // Create a new user
   app.post("/api/users", function(req, res) {
     console.log(req.body)
-    db.Users.create(req.body).then(function(dbExample) {
+    db.users.create(req.body).then(function(dbExample) {
       res.json(dbExample);
 
   //get one user by username
   app.get("/api/users/:id", (req, res) => {
-    db.Users.findAll({
+    db.users.findAll({
       where: {
         username: req.params.Users.username
       }
@@ -45,12 +45,12 @@ module.exports = app => {
     });
   });
   app.post("api/users/:id", (req, res) => {
-    db.Users.findOne({}).then(result => {
+    db.users.findOne({}).then(result => {
       res.json(result);
     });
   });
   app.put("api/users/:id", (req, res) => {
-    db.Users.findOne({}).then(result => {
+    db.users.findOne({}).then(result => {
       res.json(result);
     });
   });
@@ -93,4 +93,6 @@ module.exports = app => {
         res.json(response);
       });
   });
+
+
 };
