@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       len: [1, 50]
     },
-    username: {
+    userName: {
       type: DataTypes.STRING,
       allowNull: false,
       len: [1, 50]
@@ -18,7 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      len: [15, 75]
+      len: [10, 75]
     },
     password: {
       type: DataTypes.STRING,

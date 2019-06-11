@@ -30,7 +30,8 @@ module.exports = function(app) {
 
   // Create a new example
   app.post("/api/users", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
+    console.log(req.body)
+    db.Users.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
   });
