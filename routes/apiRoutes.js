@@ -5,27 +5,38 @@ const Request = require("request");
 module.exports = app => {
   // Get all users
   app.get("/api/users", (req, res) => {
-    db.Users.findAll({}).then(result => {
+    db.users.findAll({}).then(result => {
       res.json(result);
     });
   });
+
+  // Create a new user
+  app.post("/api/users", function(req, res) {
+    console.log(req.body);
+    db.users.create(req.body).then(function(dbExample) {
+      res.json(dbExample);
+    });
+  });
+
   //get one user by username
   app.get("/api/users/:id", (req, res) => {
-    db.Users.findAll({
-      where: {
-        username: req.params.Users.username
-      }
-    }).then(result => {
-      res.json(result);
-    });
+    db.users
+      .findAll({
+        where: {
+          username: req.params.Users.username
+        }
+      })
+      .then(result => {
+        res.json(result);
+      });
   });
   app.post("api/users/:id", (req, res) => {
-    db.Users.findOne({}).then(result => {
+    db.users.findOne({}).then(result => {
       res.json(result);
     });
   });
   app.put("api/users/:id", (req, res) => {
-    db.Users.findOne({}).then(result => {
+    db.users.findOne({}).then(result => {
       res.json(result);
     });
   });
