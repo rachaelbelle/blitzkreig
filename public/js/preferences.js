@@ -6,12 +6,11 @@ $(document).ready(function() {
   var emailInput = $("#email");
   var passwordInput = $("#password");
   var zipCode = $("#zipCode");
-  var weatherCb = $("#weatherCb");
-  var newsCb = $("#newsCb");
-  var trafficCb = $("#trafficCb");
-  var quotesCb = $("#quotesCb");
-  // eslint-disable-next-line no-unused-vars
-  // var cmsForm = $("#cms");
+  var weatherCb = $("#weatherCb").prop('checked');
+  var newsCb = $("#newsCb").prop('checked');
+  var trafficCb = $("#trafficCb").prop('checked');
+  var quotesCb = $("#quotesCb").prop('checked');
+
   // Adding an event listener for when the form is submitted
   $("#cmsForm").on("submit", handleFormSubmit);
 
@@ -34,14 +33,16 @@ $(document).ready(function() {
     var newUser = {
       firstName: firstNameInput.val().trim(),
       lastName: lastNameInput.val().trim(),
-      username: usernameInput.val().trim(),
+      userName: userNameInput.val().trim(),
       email: emailInput.val().trim(),
       password: passwordInput.val().trim(),
+      zipCode: zipCode.val().trim(),
       weather: weatherCb,
       news: newsCb,
       traffic: trafficCb,
       quotes: quotesCb
     };
+    console.log(newUser);
 
     submitUser(newUser);
   }
@@ -52,6 +53,7 @@ $(document).ready(function() {
 
   function submitUser(newData) {
     $.post("/api/users", newData, function() {
+      debugger;
       window.location.href = "/userProfile";
     });
   }
