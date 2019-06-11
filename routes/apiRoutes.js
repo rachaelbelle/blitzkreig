@@ -54,7 +54,7 @@ module.exports = app => {
   });
   //================================================================= EXTERNAL API REQUESTS
   app.get("/quote", (req, res) => {
-    Request.get(
+  Request.get(
       "http://quotes.stormconsultancy.co.uk/random.json",
       (error, response, body) => {
         if (error) {
