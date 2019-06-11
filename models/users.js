@@ -1,39 +1,3 @@
-<<<<<<< HEAD
-module.exports = function(sequelize, DataTypes) {
-  var Users = sequelize.define("Users", {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      len: [1, 50]
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      len: [1, 50]
-    },
-    username: {
-      type: DataTypes.STRING,
-      allowNull:false,
-      len: [1,50],
-      uniqiue:'compositeIndex'
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      len: [15, 75]
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      len: [5, 30]
-    },
-  });
-  // This associates the User to their News preference
-  Users.associate = function(models) {
-    models.Users.hasOne(models.NewsPrefs, {
-      onDelete: "CASCADE",
-      foreignKey: {
-=======
 "use strict";
 module.exports = (sequelize, DataTypes) => {
   const users = sequelize.define(
@@ -83,7 +47,6 @@ module.exports = (sequelize, DataTypes) => {
       },
       quotes: {
         type: DataTypes.BOOLEAN,
->>>>>>> c693144ffd823d05ea11c4de82d0f03fa2e4748f
         allowNull: false
       }
     },
