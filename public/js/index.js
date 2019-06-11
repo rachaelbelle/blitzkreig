@@ -12,6 +12,7 @@ $(document).ready(function() {
     }
 
     //Now that we verified both fields were filled in, we need to check if the info entered exists in the database
+    //how do we loop through an api? i forget lol
 
     // re: the above comment, we can pass this to our "checker"
     var currentUser = {
