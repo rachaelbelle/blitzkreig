@@ -10,7 +10,8 @@ $(document).ready(function() {
   var newsCb = $("#newsCb");
   var trafficCb = $("#trafficCb");
   var quotesCb = $("#quotesCb");
-  var cmsForm = $("#cmsForm");
+  // eslint-disable-next-line no-unused-vars
+//   var cmsForm = $("#cms");
   // Adding an event listener for when the form is submitted
   $("#cmsForm").on("submit", handleFormSubmit);
 
