@@ -2,6 +2,8 @@ var db = require("../models");
 const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("1b52f242b6544eddba125c9fb88612e1");
 const Request = require("request");
+var weather = require("weather-js");
+
 module.exports = app => {
   // Get all users
   app.get("/api/users", (req, res) => {
@@ -56,7 +58,7 @@ module.exports = app => {
   });
   //================================================================= EXTERNAL API REQUESTS
   app.get("/quote", (req, res) => {
-  Request.get(
+    Request.get(
       "http://quotes.stormconsultancy.co.uk/random.json",
       (error, response, body) => {
         if (error) {
@@ -66,6 +68,16 @@ module.exports = app => {
         res.json(response);
       }
     );
+  });
+
+  app.get("/weather", (req, res) => {
+    weather.find({ search: "San Francisco, CA", degreeType: "F" }, function(
+      err,
+      result
+    ) {
+      if (err) throw err;
+      res.json(result);
+    });
   });
   //News API get request
   app.get("/news", (req, res) => {
