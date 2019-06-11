@@ -2,7 +2,7 @@ $(document).ready(function() {
   // Getting jQuery references for the user's personal info
   var firstNameInput = $("#firstName");
   var lastNameInput = $("#lastName");
-  var usernameInput = $("#username")
+  var usernameInput = $("#username");
   var emailInput = $("#email");
   var passwordInput = $("#password");
   var zipCode = $("#zipCode");
