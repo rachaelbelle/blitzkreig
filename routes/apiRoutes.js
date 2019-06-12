@@ -14,7 +14,7 @@ module.exports = app => {
 
   // Create a new user
   app.post("/api/users", function(req, res) {
-    console.log(req.body)
+    console.log(req.body);
     db.users.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
@@ -22,13 +22,15 @@ module.exports = app => {
 
   //get one user by username
   app.get("/api/users/:id", (req, res) => {
-    db.users.findAll({
-      where: {
-        username: req.params.Users.username
-      }
-    }).then(result => {
-      res.json(result);
-    });
+    db.users
+      .findAll({
+        where: {
+          username: req.params.Users.username
+        }
+      })
+      .then(result => {
+        res.json(result);
+      });
   });
   app.post("api/users/:id", (req, res) => {
     db.users.findOne({}).then(result => {
@@ -89,5 +91,4 @@ module.exports = app => {
         res.json(response);
       });
   });
-
 };

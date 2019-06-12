@@ -6,10 +6,10 @@ $(document).ready(function() {
   var emailInput = $("#email");
   var passwordInput = $("#password");
   var zipCode = $("#zipCode");
-  var weatherCb = $("#weatherCb").prop('checked');
-  var newsCb = $("#newsCb").prop('checked');
-  var trafficCb = $("#trafficCb").prop('checked');
-  var quotesCb = $("#quotesCb").prop('checked');
+  var weatherCb = $("#weatherCb").prop("checked");
+  var newsCb = $("#newsCb").prop("checked");
+  var trafficCb = $("#trafficCb").prop("checked");
+  var quotesCb = $("#quotesCb").prop("checked");
 
   // Adding an event listener for when the form is submitted
   $("#cmsForm").on("submit", handleFormSubmit);
