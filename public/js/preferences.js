@@ -17,7 +17,6 @@ $(document).ready(function() {
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log(cmsForm);
     // Wont submit the post if we are missing core user info
     if (
       !firstNameInput.val().trim() ||
@@ -42,7 +41,7 @@ $(document).ready(function() {
       traffic: trafficCb,
       quotes: quotesCb
     };
-    console.log(newUser);
+    console.log("prefJS -44:" + JSON.stringify(newUser));
 
     submitUser(newUser);
   }

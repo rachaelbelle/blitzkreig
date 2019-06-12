@@ -11,27 +11,27 @@
         {{log this}}
 
         <div>
-          {{#if weather }}
+          {{#unless weather }}
           {{> weather-block}}
-          {{/if}}
+          {{/unless}}
         </div>
 
         <div>
-          {{#if traffic}}
+          {{#unless traffic}}
           {{> traffic-block}}
-          {{/if}}
+          {{/unless}}
         </div>
 
         <div>
-          {{#if news}}
+          {{#unless news}}
           {{> news-block}}
-          {{/if}}
+          {{/unless}}
         </div>
 
         <div>
-          {{#if quotes}}
+          {{#unless quotes}}
           {{> quote-block}}
-          {{/if}}
+          {{/unless}}
         </div>
 
       </div>
