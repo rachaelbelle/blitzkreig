@@ -6,9 +6,12 @@ $(document).ready(function() {
 
   function handleLogin(event) {
     event.preventDefault();
+    console.log(usernameInput.val());
+    console.log(passwordInput.val());
     // this code will check to make sure all fields are filled out
-    if (!usernameInput.val().trim() || !passwordInput.val().trim()) {
+    if (!usernameInput.val() || !passwordInput.val()) {
       return;
+
     }
 
     //Now that we verified both fields were filled in, we need to check if the info entered exists in the database
@@ -30,6 +33,7 @@ $(document).ready(function() {
 
   function loginUser(login) {
     $.get("/api/users", login, function() {
+      debugger;
       window.location.href = "/userProfile";
     });
   }

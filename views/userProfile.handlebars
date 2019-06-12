@@ -5,35 +5,27 @@
         <h1 class="marker">Blitzkreig!   <img src="/images/150.png" alt="profile" class="profile"></h1>
 
         <div>
-          {{#each blitzdb}}
-          {{#if weather}}
-          {{> widgets/weather-block }}
-          {{/if}}
-          {{/each}}
+          {{#unless weather}}
+          {{> weather-block}}
+          {{/unless}}
         </div>
 
         <div>
-          {{#each blitzdb}}
-          {{#if traffic}}
-          {{> widgets/traffic-block}}
-          {{/if}}
-          {{/each}}
+          {{#unless traffic}}
+          {{> traffic-block}}
+          {{/unless}}
         </div>
 
         <div>
-          {{#each blitzdb}}
-          {{#if news}}
-          {{> widgets/news-block}}
-          {{/if}}
-          {{/each}}
+          {{#unless news}}
+          {{> news-block}}
+          {{/unless}}
         </div>
 
         <div>
-          {{#each blitzdb}}
-          {{#if quote}}
-          {{> widgets/quote-block}}
-          {{/if}}
-          {{/each}}
+          {{#unless quotes}}
+          {{> quote-block}}
+          {{/unless}}
         </div>
 
       </div>
