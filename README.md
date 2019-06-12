@@ -1,4 +1,4 @@
-# Blitzkrieg
+# Blitzkrieg 👾☀️🔫
 
 https://team1project2.herokuapp.com/
 
