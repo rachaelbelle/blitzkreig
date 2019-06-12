@@ -31,9 +31,12 @@ $(document).ready(function() {
     loginUser(currentUser);
   }
 
-  function loginUser(login) {
-    $.get("/api/users", login, function() {
-      debugger;
+  function loginUser(userData) {
+    console.log(userData);
+    $.get("/api/users/", userData, function() {
+
+
+
       window.location.href = "/userProfile";
     });
   }

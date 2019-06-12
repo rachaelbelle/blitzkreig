@@ -19,14 +19,20 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/userProfile", function(req, res) {
+    console.log("*******************"+req.params);
+    console.log(req.params.username);
     db.users.findOne({
       where: {
-        userName: "okmokm"
+        userName: req.params.username
       }
     }).then(function(dbData) {
-      let myUser = dbData[0];
-      // console.log(dbData);
-      console.log(dbData.userName);
+      let myUser = dbData.dataValues;
+      //console.log(dbData);
+      console.log(myUser.userName);
+      console.log(myUser.weather);
+      console.log(myUser.news);
+      console.log(myUser.traffic);
+      console.log(myUser.quotes);
       res.render("userProfile", myUser);
   });
 });

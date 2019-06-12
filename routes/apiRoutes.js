@@ -5,12 +5,23 @@ const Request = require("request");
 module.exports = app => {
   // Get all users
   app.get("/api/users", (req, res) => {
+    console.log("app get users");
+    console.log(req.body);
     db.users.findAll({}).then(result => {
       res.json(result);
     });
   });
 
-  // Create a new user
+  app.get("/api/users/:userName", (req, res) => {
+
+    console.log(req.params.userName);
+
+    db.users.findOne({where: {username:req.params.userName}}).then(result => {
+      res.json(result);
+    });
+  });
+
+  // Create a new user (for prefernces page)
   app.post("/api/users", function(req, res) {
     console.log(req.body)
     db.users.create(req.body).then(function(dbExample) {
