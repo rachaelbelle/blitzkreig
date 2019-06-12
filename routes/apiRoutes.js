@@ -29,6 +29,7 @@ module.exports = app => {
   app.post("/api/users", function(req, res) {
     console.log(req.body);
     db.users.create(req.body).then(function(dbExample) {
+      console.log("apiR 32: " + dbExample);
       res.json(dbExample);
     });
   });
