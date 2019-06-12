@@ -3,6 +3,9 @@ const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("1b52f242b6544eddba125c9fb88612e1");
 const Request = require("request");
 var weather = require("weather-js");
+const googleMapsClient = require("@google/maps").createClient({
+  key: "AIzaSyA4GvQEVUhN2cbBZvQ1ObqGmRnup1mXPyA"
+});
 
 module.exports = app => {
   // Get all users
@@ -14,7 +17,7 @@ module.exports = app => {
 
   // Create a new user
   app.post("/api/users", function(req, res) {
-    console.log(req.body)
+    console.log(req.body);
     db.users.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
@@ -22,13 +25,15 @@ module.exports = app => {
 
   //get one user by username
   app.get("/api/users/:id", (req, res) => {
-    db.users.findAll({
-      where: {
-        username: req.params.Users.username
-      }
-    }).then(result => {
-      res.json(result);
-    });
+    db.users
+      .findAll({
+        where: {
+          username: req.params.Users.username
+        }
+      })
+      .then(result => {
+        res.json(result);
+      });
   });
   app.post("api/users/:id", (req, res) => {
     db.users.findOne({}).then(result => {
@@ -57,7 +62,7 @@ module.exports = app => {
     });
   });
   //================================================================= EXTERNAL API REQUESTS
-  app.get("/quote", (req, res) => {
+  app.get("/api/quote", (req, res) => {
     Request.get(
       "http://quotes.stormconsultancy.co.uk/random.json",
       (error, response, body) => {
@@ -69,8 +74,20 @@ module.exports = app => {
       }
     );
   });
-
-  app.get("/weather", (req, res) => {
+  app.get("/api/maps", (req, res) => {
+    // Geocode an address.
+    googleMapsClient.geocode(
+      {
+        address: "1600 Amphitheatre Parkway, Mountain View, CA"
+      },
+      function(err, response) {
+        if (err) console.log(err);
+        console.log(response);
+        res.send(response);
+      }
+    );
+  });
+  app.get("/api/weather", (req, res) => {
     weather.find({ search: "San Francisco, CA", degreeType: "F" }, function(
       err,
       result
@@ -80,7 +97,7 @@ module.exports = app => {
     });
   });
   //News API get request
-  app.get("/news", (req, res) => {
+  app.get("/api/news", (req, res) => {
     newsapi.v2
       .topHeadlines({
         country: "us"
@@ -89,5 +106,4 @@ module.exports = app => {
         res.json(response);
       });
   });
-
 };
