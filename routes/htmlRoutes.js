@@ -100,6 +100,10 @@ module.exports = function (app) {
             }
           });
 
+
+
+
+
           db.users
           .findOne({
             where: {
@@ -116,18 +120,44 @@ module.exports = function (app) {
               myUser.traffic = true;
               myUser.quotes = true;
             }
-            myUser.quote = quote;
-            // var hbsObject1 = {
-            //   titles: titles
-            // };
-            // var hbsObject2 = {
-            //   articles: articles
-            // };
-            myUser.titles = titletrying;
-            myUser.articles = articlestrying;
-            console.log("sending my user: ");
-            console.log(myUser);
-            res.render("userProfile", myUser);
+
+
+            console.log("User zipcode is: "+myUser.zipCode);
+            // ****** Weather check
+            weather.find({ search: myUser.zipCode, degreeType: "F" }, function(
+              err,
+              result
+            ) {
+              if (err) throw err;
+              // res.json(result);
+              console.log("Weather result is: ");
+              //console.log(result);
+              
+              var weatherJson = {
+                temperature: result[0].current.temperature,
+                feelslike: result[0].current.feelslike,
+                humidity: result[0].current.humidity,
+                sky: result[0].current.skytext,
+              }
+
+              myUser.quote = quote;
+              // var hbsObject1 = {
+              //   titles: titles
+              // };
+              // var hbsObject2 = {
+              //   articles: articles
+              // };
+              myUser.titles = titletrying;
+              myUser.articles = articlestrying;
+              myUser.weatherDetails = weatherJson
+              console.log("sending my user: ");
+              console.log(myUser);
+              res.render("userProfile", myUser);
+
+
+            });
+
+            
           })
 
 

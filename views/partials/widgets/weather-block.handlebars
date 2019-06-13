@@ -4,12 +4,15 @@
     </div>
     <div class="card-content">
       <span class="card-title activator grey-text text-darken-4">WEATHER<i class="material-icons right">Click for Info</i></span>
-      {{!-- <p><a href="#">This is a link</a></p> --}}
+      <p>Temp: {{weatherDetails.temperature}}</p>
+      <p>Sky: {{weatherDetails.sky}}</p>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">WEATHER<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
-      <p>Your zipcode is: {{zipCode}}</p>
+      <p>Temperature: {{weatherDetails.temperature}}</p>
+      <p>Feels like: {{weatherDetails.feelslike}}</p>
+      <p>Humidity: {{weatherDetails.humidity}}</p>
+      <p>Sky: {{weatherDetails.sky}}</p>
     </div>
   </div>
   
