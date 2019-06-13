@@ -19,11 +19,15 @@ The is a full stack application that is the Jack of All APPs. This app takes all
 <br>
 
 <kbd>
-  <img src="public/images/loginPage.png" width="220"/>
+  <img src="public/images/Blitzkreig.png" width="220"/>
 </kbd>
 
 <kbd>
-  <img src="public/images/signUp.png" width="200"/>
+  <img src="public/images/signupPage.png" width="200"/>
+</kbd>
+
+<kbd>
+  <img src="public/images/seigetheday.png" width="200"/>
 </kbd>
 
 
