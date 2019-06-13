@@ -33,7 +33,7 @@ The is a full stack application that is the Jack of All APPs. This app takes all
 
 ## API's :
 
-* Google Maps
+* Google Maps/Traffic Layer
 * News API
 * Quotes:Storm
 * Weather-js
