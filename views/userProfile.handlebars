@@ -2,8 +2,8 @@
   <div class="container userProfile">
     <div class="row">
       <div class="col-s12">
-        <h1 class="marker">Blitzkreig! <img src="/images/tankProfileImg.png" alt="profile" class="profile"></h1>
-        <h3>Welcome <span class="member-name"></span></h3>
+        <h2 class="marker">Blitzkreig! Seige the Day! <img src="/images/tankProfileImg.png" alt="profile" class="profile"></h2>
+        <h3>Welcome User <span class="member-name"></span></h3>
 
       {{log dataValues}}
       {{log weather}}
@@ -11,28 +11,36 @@
 
         {{log this}}
 
-        <div>
-          {{#if weather }}
-          {{> weather-block}}
-          {{/if}}
+        <div class="col s9 offset-s3">
+          {{!-- {{#each blitzdb}}
+          {{#if weather}} --}}
+          {{> widgets/weather-block }}
+          {{!-- {{/if}}
+          {{/each}} --}}
         </div>
 
-        <div>
-          {{#if traffic}}
-          {{> traffic-block}}
-          {{/if}}
+        <div class="col s9 offset-s3">
+          {{!-- {{#each blitzdb}}
+          {{#if traffic}} --}}
+          {{> widgets/traffic-block}}
+          {{!-- {{/if}}
+          {{/each}} --}}
         </div>
 
-        <div>
-          {{#if news}}
-          {{> news-block}}
-          {{/if}}
+        <div class="col s9 offset-s3">
+          {{!-- {{#each blitzdb}}
+          {{#if news}} --}}
+          {{> widgets/news-block}}
+          {{!-- {{/if}}
+          {{/each}} --}}
         </div>
 
-        <div>
-          {{#if quotes}}
-          {{> quote-block}}
-          {{/if}}
+        <div class="col s9 offset-s3">
+          {{!-- {{#each blitzdb}}
+          {{#if quote}} --}}
+          {{> widgets/quote-block}}
+          {{!-- {{/if}}
+          {{/each}} --}}
         </div>
 
 

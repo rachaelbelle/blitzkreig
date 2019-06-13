@@ -71,3 +71,6 @@ body{
   border-left: 4px solid #42424276;
   border-right: 4px solid  #fedb1379;
 }
+.card{
+  border-radius: 10%;
+}
