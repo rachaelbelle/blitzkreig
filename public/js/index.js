@@ -16,32 +16,41 @@ $(document).ready(function() {
     console.log(passwordInput.val());
     // this code will check to make sure all fields are filled out
     if (!usernameInput.val() || !passwordInput.val()) {
-      return;
+      //return;
+      console.log("usernameinput or passwordinput was empty");
     }
 
     //Now that we verified both fields were filled in, we need to check if the info entered exists in the database
     //how do we loop through an api? i forget lol
 
-    // re: the above comment, we can pass this to our "checker"
     var currentUser = {
       username: usernameInput.val().trim(),
       password: passwordInput.val().trim()
     };
+    // this code will check to make sure all fields are filled out
+    if (!usernameInput.val() || !passwordInput.val()) {
+      return;
+    }
 
-    // if (currentUser does not exist), then...
-    //////message: "This account does not exist. Please try again, or create an account by clicking below."
-
-    // else if (currentUser exists), then...
-
-    loginUser(currentUser);
+    loginUser(currentUser.username, currentUser.password);
   }
 
-  function loginUser(userData) {
+  function loginUser(username, password) {
     console.log("index.js In loginUser");
-    console.log(userData);
-    $.get("/api/users/", userData, function() {
-      window.location.href = "/userProfile";
-    });
+    console.log(username + " ... " + password);
+    debugger;
+    $.post("/api/login", {
+      userName: username,
+      passWord: password
+    })
+      .then(function(data) {
+        console.log(data);
+        debugger;
+        window.location.replace(data);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   }
 });
 

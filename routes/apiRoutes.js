@@ -2,6 +2,11 @@ var db = require("../models");
 const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("1b52f242b6544eddba125c9fb88612e1");
 const Request = require("request");
+var weather = require("weather-js");
+const googleMapsClient = require("@google/maps").createClient({
+  key: "AIzaSyA4GvQEVUhN2cbBZvQ1ObqGmRnup1mXPyA"
+});
+
 module.exports = app => {
   // Get all users
   app.get("/api/users", (req, res) => {
@@ -35,8 +40,9 @@ module.exports = app => {
   // Create a new user (for prefernces page)
   app.post("/api/users", function(req, res) {
     console.log("apiRoutes.js In post /api/users with body:");
-    console.log(req.body);
+    console.log("aR 30: " + JSON.stringify(req.body));
     db.users.create(req.body).then(function(dbExample) {
+      console.log("success - 33");
       res.json(dbExample);
     });
   });
@@ -64,13 +70,32 @@ module.exports = app => {
       res.json(result);
     });
   });
-  // Create a new example
-  app.post("/api/examples", (req, res) => {
-    db.Example.create(req.body).then(dbExample => {
-      res.json(dbExample);
-    });
+  
+  app.post("/api/login", function(req, res) {
+    // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
+    // So we're sending the user back the route to the members page because the redirect will happen on the front end
+    // They won't get this or even be able to access this page if they aren't authed
+    console.log("success - 68");
+    res.json("/userProfile");
   });
-  // Delete an example by id
+
+  app.get("/api/user_data", function(req, res) {
+    if (!req.user) {
+      // The user is not logged in, send back an empty object
+      res.json({});
+      console.log("fail - 76");
+    } else {
+      // Otherwise send back the user's email and id
+      // Sending back a password, even a hashed password, isn't a good idea
+      console.log("success - 80");
+      res.json({
+        userName: req.user.userName,
+        id: req.user.id
+      });
+    }
+  });
+
+  // Delete an example by id, not needed
   app.delete("/api/examples/:id", (req, res) => {
     db.Example.destroy({
       where: {
@@ -93,8 +118,30 @@ module.exports = app => {
       }
     );
   });
+  app.get("/api/maps", (req, res) => {
+    // Geocode an address.
+    googleMapsClient.geocode(
+      {
+        address: "1600 Amphitheatre Parkway, Mountain View, CA"
+      },
+      function(err, response) {
+        if (err) console.log(err);
+        console.log(response);
+        res.send(response);
+      }
+    );
+  });
+  app.get("/api/weather", (req, res) => {
+    weather.find({ search: "San Francisco, CA", degreeType: "F" }, function(
+      err,
+      result
+    ) {
+      if (err) throw err;
+      res.json(result);
+    });
+  });
   //News API get request
-  app.get("/news", (req, res) => {
+  app.get("/api/news", (req, res) => {
     newsapi.v2
       .topHeadlines({
         country: "us"

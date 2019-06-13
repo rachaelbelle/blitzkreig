@@ -17,6 +17,8 @@
 }
 body{
   font-family: 'Fira Sans Extra Condensed', sans-serif;
+  background: url("/images/funky-lines.png");
+
 }
 @media only screen and (max-width : 992px) {
   header, main, footer {
@@ -41,6 +43,34 @@ body{
 }
 .profile{
   border-radius: 50%;
-  height: 75px;
-  margin-left: 50px;
+  height: 80px;
+  /* margin-left: 50px; */
+  opacity: 0.3;
+  border: dashed 1px #616161;
+}
+.loginPage{
+  background-color: white;
+  border-left: 10px solid black;
+  border-right: 10px solid  #fed913;
+  padding-bottom: 50px;
+  border-radius: 10%;
+}
+.preferences{
+  background-color: white;
+  padding-bottom: 50px;
+  padding-top: 5px;
+  border-radius: 7%;
+  border-left: 4px solid #42424276;
+  border-right: 4px solid  #fedb1379;
+}
+.userProfile{
+  background-color: white;
+  padding-bottom: 50px;
+  padding-top: 5px;
+  border-radius: 7%;
+  border-left: 4px solid #42424276;
+  border-right: 4px solid  #fedb1379;
+}
+.card{
+  border-radius: 10%;
 }

@@ -52,8 +52,7 @@ $(document).ready(function() {
       traffic: trafficCb,
       quotes: quotesCb
     };
-    console.log("##########################");
-    console.log(newUser);
+    console.log("preference.js" + JSON.stringify(newUser));
 
     submitUser(newUser);
   }
