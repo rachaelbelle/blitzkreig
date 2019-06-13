@@ -29,10 +29,10 @@ module.exports = function(app) {
 
     myUser = {
       id: 1,
-      userName: "test",
+      userName: "guest",
       weather: true,
-      news: false,
-      traffic: false,
+      news: true,
+      traffic: true,
       quotes: true
     };
     console.log("User being sent is: ");

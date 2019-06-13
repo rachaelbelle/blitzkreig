@@ -80,14 +80,19 @@ module.exports = app => {
   });
 
   app.get("/api/user_data", function(req, res) {
+    console.log("apiRoutes.js  get /api/user_data");
+    console.log(req);
     if (!req.user) {
       // The user is not logged in, send back an empty object
-      res.json({});
-      console.log("fail - 76");
+      res.json({
+        userName: "guest",
+        id: 199
+      });
+      console.log("apiRoutes get /api/user_data fail getting user");
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      console.log("success - 80");
+      console.log("apiRoutes get /api/user_data got user");
       res.json({
         userName: req.user.userName,
         id: req.user.id
@@ -95,7 +100,7 @@ module.exports = app => {
     }
   });
 
-  // Delete an example by id, not needed
+  // DO NOT DELETE **** Needed for Travis Tests
   app.delete("/api/examples/:id", (req, res) => {
     db.Example.destroy({
       where: {
@@ -105,6 +110,21 @@ module.exports = app => {
       res.json(dbExample);
     });
   });
+
+  // DO NOT DELETE **** Needed for Travis Tests
+  app.get("/api/examples", function(req,res) {
+    db.Example.findAll({}).then(function(dbExample){
+      res.json(dbExample);
+    })
+  })
+
+  // DO NOT DELETE **** Needed for Travis Tests
+  app.post("/api/examples", function(req,res) {
+    db.Example.create(req.body).then(function(dbExample){
+      res.json(dbExample);
+    })
+  })
+
   //================================================================= EXTERNAL API REQUESTS
   app.get("/quote", (req, res) => {
     Request.get(
