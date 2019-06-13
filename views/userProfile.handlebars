@@ -14,6 +14,7 @@
         {{log news}}
         {{log quotes}}
         {{log zipCode}}
+        {{log quote}}
 
         <div class="col s9 offset-s3">
           {{#if weather}}
@@ -30,13 +31,13 @@
 
         <div class="col s9 offset-s3">
           {{#if news}}
-          {{> widgets/news-block country=zipCode}}
+          {{> widgets/news-block titles=titles articles=articles}}
           {{/if}}
         </div>
 
         <div class="col s9 offset-s3">
           {{#if quotes}}
-          {{> widgets/quote-block quotes="Best quote of the day"}}
+          {{> widgets/quote-block quotes=quote}}
           {{/if}}
         </div>
 
