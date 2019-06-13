@@ -28,24 +28,23 @@ $(document).ready(function() {
       password: passwordInput.val().trim()
     };
     // this code will check to make sure all fields are filled out
-    if (!usernameInput.val() || !passwordInput.val()) {
-      return;
-    }
+    // if (!usernameInput.val() || !passwordInput.val()) {
+    //   return;
+    // }
 
     loginUser(currentUser.username, currentUser.password);
   }
 
-  function loginUser(username, password) {
+  function loginUser(username, paswrd) {
     console.log("index.js In loginUser");
-    console.log(username + " ... " + password);
-    debugger;
+    console.log(username + " ... " + paswrd);
+    //43 - 46: how do we know what its doing?
     $.post("/api/login", {
       userName: username,
-      passWord: password
+      password: paswrd
     })
       .then(function(data) {
         console.log(data);
-        debugger;
         window.location.replace(data);
       })
       .catch(function(err) {

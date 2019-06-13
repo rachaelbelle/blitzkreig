@@ -42,7 +42,7 @@ module.exports = app => {
     console.log("apiRoutes.js In post /api/users with body:");
     console.log("aR 30: " + JSON.stringify(req.body));
     db.users.create(req.body).then(function(dbExample) {
-      console.log("success - 33");
+      console.log("success - line 45");
       res.json(dbExample);
     });
   });
@@ -70,7 +70,7 @@ module.exports = app => {
       res.json(result);
     });
   });
-  
+
   app.post("/api/login", function(req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end

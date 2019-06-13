@@ -23,10 +23,10 @@ module.exports = function(app) {
   app.get("/userProfile", function(req, res) {
     console.log("htmlroutes.js In get /userProfile with body");
     console.log("*******************");
-    console.log(req.body);
+    console.log("26: " + req.body);
 
     let myUser = req.body;
-
+    console.log("29: " + myUser);
     myUser = {
       id: 1,
       userName: "guest",
@@ -45,15 +45,33 @@ module.exports = function(app) {
         }
       })
       .then(function(dbData) {
-        let myUser = dbData.dataValues;
-        if( myUser.userName == "guest"){
-          myUser.weather = true;
-          myUser.news = true;
-          myUser.traffic = true;
-          myUser.quotes = true;
+        if(dbData){
+          myUser = dbData.dataValues;
+        } else {
+          let myUser = {
+            id: 3,
+            firstName: 'Guest',
+            lastName: 'Guest',
+            userName: 'guest',
+            email: 'test@test.com',
+            password: 'password',
+            zipCode: 8724,
+            weather: true,
+            news: false,
+            traffic: false,
+            quotes: true
+            };
         }
+
+        // let myUser = dbData.dataValues;
+        // if( myUser.userName == "guest"){
+        //   myUser.weather = true;
+        //   myUser.news = true;
+        //   myUser.traffic = true;
+        //   myUser.quotes = true;
+        // }
         //console.log(dbData);
-        console.log(myUser.userName);
+        console.log("75: " + myUser);
         console.log(myUser.weather);
         console.log(myUser.news);
         console.log(myUser.traffic);
