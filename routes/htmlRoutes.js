@@ -46,6 +46,12 @@ module.exports = function(app) {
       })
       .then(function(dbData) {
         let myUser = dbData.dataValues;
+        if( myUser.username == "guest"){
+          myUser.weather = true;
+          myUser.news = true;
+          myUser.traffic = true;
+          myUser.quotes = true;
+        }
         //console.log(dbData);
         console.log(myUser.userName);
         console.log(myUser.weather);
