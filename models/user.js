@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
       len: [5, 30]
     },
     zipCode: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       len: [5, 5]
     },

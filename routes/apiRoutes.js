@@ -40,9 +40,11 @@ module.exports = app => {
   // Create a new user (for prefernces page)
   app.post("/api/users", function(req, res) {
     console.log("apiRoutes.js In post /api/users with body:");
-    console.log("aR 30: " + JSON.stringify(req.body));
+    console.log(req.body);
     db.users.create(req.body).then(function(dbExample) {
-      console.log("success - 33");
+      console.log("success creating user- user created is: ");
+      console.log("*************")
+      console.log(dbExample);
       res.json(dbExample);
     });
   });
@@ -75,15 +77,18 @@ module.exports = app => {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    console.log("success - 68");
-    res.json("/userProfile");
+    console.log("apiRoutes.js in post /api/login");
+    console.log(req.body);
+    res.json("/userProfile/"+req.body.userName);
+    //res.render("userProfile");
   });
 
   app.get("/api/user_data", function(req, res) {
     console.log("apiRoutes.js  get /api/user_data");
-    console.log(req);
+    //console.log(req);
     if (!req.user) {
       // The user is not logged in, send back an empty object
+      console.log("user is not passed in req, creating guest user");
       res.json({
         userName: "guest",
         id: 199

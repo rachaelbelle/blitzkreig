@@ -5,9 +5,9 @@ $(document).ready(function() {
 
   $("#loginForm").on("submit", handleLogin);
 
-  $("#submit").on("click", function() {
-    console.log("I got CLIIIIICKED!!!!!");
-  });
+  // $("#submit").on("click", function() {
+  //   console.log("I got CLIIIIICKED!!!!!");
+  // });
 
   function handleLogin(event) {
     console.log("index.js In handleLogin");

@@ -2,34 +2,42 @@
   <div class="container userProfile">
     <div class="row">
       <div class="col-s12">
-        <h2 class="marker text-center"> Blitzkreig! Seige the Day! <img src="/images/tankProfileImg.png" alt="profile" class="profile"></h2>
-        <h3>Welcome <span class="member-name"></span></h3>
+        <h2 class="marker text-center"> Blitzkreig! Seige the Day! <img src="/images/tankProfileImg.png" alt="profile"
+            class="profile"></h2>
+        {{!-- <h3>Welcome <span class="member-name"></span></h3> --}}
+        <h3>Welcome {{userName}}</span></h3>
 
+
+        {{log userName}}
         {{log weather}}
-        {{log this}}
+        {{log traffic}}
+        {{log news}}
+        {{log quotes}}
+        {{log zipCode}}
+        {{log quote}}
 
         <div class="col s9 offset-s3">
           {{#if weather}}
-            {{> widgets/weather-block }}
+          {{> widgets/weather-block weatherDetails=weatherDetails}}
           {{/if}}
-          
+
         </div>
 
         <div class="col s9 offset-s3">
           {{#if traffic}}
-            {{> widgets/traffic-block}}
+          {{> widgets/traffic-block zipCode=zipCode}}
           {{/if}}
         </div>
 
         <div class="col s9 offset-s3">
-          {{#if news}} }}
-            {{> widgets/news-block}}
+          {{#if news}}
+          {{> widgets/news-block titles=titles articles=articles}}
           {{/if}}
         </div>
 
         <div class="col s9 offset-s3">
           {{#if quotes}}
-            {{> widgets/quote-block}}
+          {{> widgets/quote-block quotes=quote}}
           {{/if}}
         </div>
 

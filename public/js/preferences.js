@@ -64,15 +64,18 @@ $(document).ready(function() {
   function submitUser(newData) {
     console.log("preferences.js In submitUser");
     console.log("Sending this via post to /api/users/ : " + newData);
-    $.post("/api/users", newData, function() {
+    debugger;
+    $.post("/api/users", newData, function(req) {
       //function(req, res) {
-      //debugger;
+      console.log(req.body);
+      debugger;
       console.log("in post of submit user");
       // console.log("Req: ");
       // console.log(req);
       // console.log("Res: ");
       // console.log(res);
-      window.location.href = "/userProfile";
+      window.location.href = "/userProfile/"+req.userName;
+      //res.render("userProfile",req.body);
     });
     // router.post("/api/users", function(req, res) {
     //   //   //debugger;
