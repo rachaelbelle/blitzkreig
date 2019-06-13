@@ -31,5 +31,25 @@ The is a full stack application that is the Jack of All APPs. This app takes all
 </kbd>
 
 
+## API's :
+
+* Google Maps
+* News API
+* Quotes:Storm
+* Weather-js
+
+## Libraries:
+* Materialize
+* Sequelize
+
+## Unit Testing:
+* Mocha
+* Chai
+
+##Future Improvements:
+* Login functionality using Passport to encrypt.
+* Add a 'Logout' function.
+* Add more widget options.
+
 
 [![Build Status](https://travis-ci.com/rachaelbelle/team1Project2.svg?branch=master)](https://travis-ci.com/rachaelbelle/team1Project2)
