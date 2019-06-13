@@ -4,34 +4,34 @@
       <div class="col-s12">
         <h1 class="marker">Blitzkreig!   <img src="/images/150.png" alt="profile" class="profile"></h1>
 
-      {{!-- {{log dataValues}}
+      {{log dataValues}}
       {{log weather}}
-      {{log dataValues.weather}} --}}
+      {{log dataValues.weather}}
 
         {{log this}}
 
         <div>
-          {{#unless weather }}
+          {{#if weather }}
           {{> weather-block}}
-          {{/unless}}
+          {{/if}}
         </div>
 
         <div>
-          {{#unless traffic}}
+          {{#if traffic}}
           {{> traffic-block}}
-          {{/unless}}
+          {{/if}}
         </div>
 
         <div>
-          {{#unless news}}
+          {{#if news}}
           {{> news-block}}
-          {{/unless}}
+          {{/if}}
         </div>
 
         <div>
-          {{#unless quotes}}
+          {{#if quotes}}
           {{> quote-block}}
-          {{/unless}}
+          {{/if}}
         </div>
 
       </div>
