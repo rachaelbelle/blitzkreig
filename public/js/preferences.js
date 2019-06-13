@@ -1,3 +1,4 @@
+//var router = require("express").Router();
 $(document).ready(function() {
   // Getting jQuery references for the user's personal info
   var firstNameInput = $("#firstName");
@@ -11,12 +12,22 @@ $(document).ready(function() {
   var trafficCb = $("#trafficCb").prop("checked");
   var quotesCb = $("#quotesCb").prop("checked");
 
+  console.log("In preferences.js");
+  console.log(cmsForm);
+  console.log(firstNameInput);
+  console.log(lastNameInput);
+  console.log(userNameInput);
+  console.log(emailInput);
+  console.log(passwordInput);
+  console.log(zipCode);
   // Adding an event listener for when the form is submitted
   $("#cmsForm").on("submit", handleFormSubmit);
 
   // A function for handling what happens when the form to create a new post is submitted
   function handleFormSubmit(event) {
     event.preventDefault();
+    console.log("In preferences.js and in handleFormSubmit");
+
     // Wont submit the post if we are missing core user info
     if (
       !firstNameInput.val().trim() ||
@@ -41,7 +52,7 @@ $(document).ready(function() {
       traffic: trafficCb,
       quotes: quotesCb
     };
-    console.log("prefJS -44:" + JSON.stringify(newUser));
+    console.log("preference.js" + JSON.stringify(newUser));
 
     submitUser(newUser);
   }
@@ -51,9 +62,29 @@ $(document).ready(function() {
   // maybe yianni's oAuth stuff will settle this?
 
   function submitUser(newData) {
+    console.log("preferences.js In submitUser");
+    console.log("Sending this via post to /api/users/ : " + newData);
     $.post("/api/users", newData, function() {
-      debugger;
+      //function(req, res) {
+      //debugger;
+      console.log("in post of submit user");
+      // console.log("Req: ");
+      // console.log(req);
+      // console.log("Res: ");
+      // console.log(res);
       window.location.href = "/userProfile";
     });
+    // router.post("/api/users", function(req, res) {
+    //   //   //debugger;
+    //   //   console.log("Req: ");
+    //   //   console.log(req);
+    //   //   console.log("Res: ");
+    //   //   console.log(res);
+    //   //   window.location.href = "/userProfile";
+    //   // });
+    //   console.log("########### Preferences.js body of post is: ");
+    //   console.log(res.body);
+    //   res.json();
+    // });
   }
 });

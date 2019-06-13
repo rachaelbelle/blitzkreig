@@ -9,30 +9,37 @@ const googleMapsClient = require("@google/maps").createClient({
 
 module.exports = app => {
   // Get all users
-  // app.get("/api/users", (req, res) => {
-  //   console.log("app get users");
-  //   console.log(req.body);
-  //   db.users.findAll({}).then(result => {
-  //     res.json(result);
-  //   });
-  // });
+  app.get("/api/users", (req, res) => {
+    console.log("apiRoutes.js In get /api/users");
+    console.log(req.body);
+    let username;
+    if (req.body.username) {
+      username = req.body.username;
+    } else {
+      username = "test";
+    }
+    db.users.findOne({ where: { userName: username } }).then(result => {
+      console.log("Found user with username: " + username);
+      console.log("Returning result:");
+      console.log(result);
+      res.json(result);
+    });
+  });
 
-  // //should get your info on login ...
-  // app.get("/api/users/:userName", (req, res) => {
-  //   console.log("aR 17: " + req.userName);
-  //   db.users
-  //     .findOne({
-  //       where: {
-  //         userName: req.params.userName
-  //       }
-  //     })
-  //     .then(result => {
-  //       res.json(result);
-  //     });
-  // });
+  app.get("/api/users/:userName", (req, res) => {
+    console.log("apiRoutes.js In get /api/users:username");
+    console.log(req.params.userName);
+
+    db.users
+      .findOne({ where: { username: req.params.userName } })
+      .then(result => {
+        res.json(result);
+      });
+  });
 
   // Create a new user (for prefernces page)
   app.post("/api/users", function(req, res) {
+    console.log("apiRoutes.js In post /api/users with body:");
     console.log("aR 30: " + JSON.stringify(req.body));
     db.users.create(req.body).then(function(dbExample) {
       console.log("success - 33");
@@ -41,31 +48,29 @@ module.exports = app => {
   });
 
   //get one user by username
-  // app.get("/api/users/:id", (req, res) => {
-  //   db.users
-  //     .findOne({
-  //       where: {
-  //         userName: req.params.users.userName
-  //       }
-  //     })
-  //     .then(result => {
-  //       res.json(result);
-  //     });
-  // });
-
-  //not needed?
-  // app.post("api/users/:id", (req, res) => {
-  //   db.users.findOne({}).then(result => {
-  //     res.json(result);
-  //   });
-  // });
-  //not needed?
-  // app.put("api/users/:id", (req, res) => {
-  //   db.users.findOne({}).then(result => {
-  //     res.json(result);
-  //   });
-  // });
-
+  app.get("/api/users/:id", (req, res) => {
+    console.log("apiRoutes.js In get /api/users/:id");
+    db.users
+      .findAll({
+        where: {
+          username: req.params.Users.username
+        }
+      })
+      .then(result => {
+        res.json(result);
+      });
+  });
+  app.post("api/users/:id", (req, res) => {
+    db.users.findOne({}).then(result => {
+      res.json(result);
+    });
+  });
+  app.put("api/users/:id", (req, res) => {
+    db.users.findOne({}).then(result => {
+      res.json(result);
+    });
+  });
+  
   app.post("/api/login", function(req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
