@@ -46,7 +46,7 @@ The is a full stack application that is the Jack of All APPs. This app takes all
 * Mocha
 * Chai
 
-##Future Improvements:
+## Future Improvements:
 * Login functionality using Passport to encrypt.
 * Add a 'Logout' function.
 * Add more widget options.
