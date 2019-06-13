@@ -20,32 +20,36 @@ module.exports = function(app) {
   });
 
   // Load example page and pass in an example by id
-  app.get("/userProfile", function(req, res) {
+  app.get("/userProfile/:name", function(req, res) {
     console.log("htmlroutes.js In get /userProfile with body");
-    console.log("*******************");
-    console.log(req.body);
+    //console.log("*******************");
+    //console.log(req.body);
+    console.log("Username is: ");
+    console.log(req.params.name);
 
-    let myUser = req.body;
+    // let myUser = req.body;
 
-    myUser = {
-      id: 1,
-      userName: "guest",
-      weather: true,
-      news: true,
-      traffic: true,
-      quotes: true
-    };
-    console.log("User being sent is: ");
-    console.log(myUser);
+    // myUser = {
+    //   id: 1,
+    //   userName: "guest",
+    //   weather: true,
+    //   news: true,
+    //   traffic: true,
+    //   quotes: true
+    // };
+    // console.log("User being sent is: ");
+    // console.log(myUser);
 
     db.users
       .findOne({
         where: {
-          userName: myUser.userName
+          userName: req.params.name
         }
       })
       .then(function(dbData) {
         let myUser = dbData.dataValues;
+        console.log("My user passed is: ");
+        console.log(myUser);
         if( myUser.userName == "guest"){
           myUser.weather = true;
           myUser.news = true;
