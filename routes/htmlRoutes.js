@@ -138,13 +138,16 @@ module.exports = function (app) {
               if (err) throw err;
               // res.json(result);
               console.log("Weather result is: ");
-              //console.log(result);
+              console.log(result);
 
               var weatherJson = {
+                name: result[0].location.name,
+                zip: result[0].location.zipcode,
                 temperature: result[0].current.temperature,
                 feelslike: result[0].current.feelslike,
                 humidity: result[0].current.humidity,
                 sky: result[0].current.skytext,
+                wind: result[0].current.windspeed,
               }
 
               myUser.quote = quote;
