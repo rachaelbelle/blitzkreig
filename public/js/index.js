@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
   console.log("/js/index.js document ready");
   var usernameInput = $("#username");
@@ -47,6 +48,7 @@ $(document).ready(function() {
         console.log(data);
         debugger;
         window.location.replace(data);
+        res.render('userProfile',data);
       })
       .catch(function(err) {
         console.log(err);

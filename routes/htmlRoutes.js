@@ -68,7 +68,7 @@ module.exports = function (app) {
           let count2=0;
           //articles = response.articles;
           console.log("**********************");
-          //console.log(response);
+          console.log(response);
           response.articles.forEach(article => {
             var jsonTitle;
             if(count!==3){
@@ -100,10 +100,6 @@ module.exports = function (app) {
             }
           });
 
-
-
-
-
           db.users
           .findOne({
             where: {
@@ -111,16 +107,27 @@ module.exports = function (app) {
             }
           })
           .then(function (dbData) {
-            let myUser = dbData.dataValues;
+            let myUser;
+            if( req.params.name == "guest" ) {
+              myUser = { id: 1,
+                firstName: 'guest',
+                lastName: 'guest',
+                userName: 'guest',
+                email: 'guest@guest.guest',
+                password: 'password',
+                zipCode: '08724',
+                weather: true,
+                news: true,
+                traffic: true,
+                quotes: true,
+                createdAt: '2019-06-13T04:32:06.000Z',
+                updatedAt: '2019-06-13T04:32:06.000Z' }
+            } else {
+              myUser = dbData.dataValues;
+            }
+            
             console.log("My user passed is: ");
             console.log(myUser);
-            if (myUser.userName == "guest") {
-              myUser.weather = true;
-              myUser.news = true;
-              myUser.traffic = true;
-              myUser.quotes = true;
-            }
-
 
             console.log("User zipcode is: "+myUser.zipCode);
             // ****** Weather check
@@ -132,7 +139,7 @@ module.exports = function (app) {
               // res.json(result);
               console.log("Weather result is: ");
               //console.log(result);
-              
+
               var weatherJson = {
                 temperature: result[0].current.temperature,
                 feelslike: result[0].current.feelslike,
