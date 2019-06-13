@@ -71,11 +71,11 @@ module.exports = function (app) {
           console.log(response);
           response.articles.forEach(article => {
             var jsonTitle;
-            if(count!==3){
+            if(count!==1){
               jsonTitle = {
                 title: article.title
               }
-              titletrying+="<p>"+article.title+"</p>";
+              titletrying+=article.title;
               //titles.push(jsonTitle);
               titles.push(titletrying);
               //console.log("added title: ");
@@ -89,9 +89,9 @@ module.exports = function (app) {
                 description: article.description,
                 url: article.url
               }
-              articlestrying+="<p>"+article.title+"</p>";
-              articlestrying+="<p>"+article.description+"</p>";
-              articlestrying+="<p>"+article.url+"</p>";
+              articlestrying+=article.title;
+              articlestrying+=article.description;
+              articlestrying+=article.url;
               //articles.push(jsonArticle);
               articles.push(articlestrying);
               //console.log("added article: ");
