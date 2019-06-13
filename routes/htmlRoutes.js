@@ -53,7 +53,7 @@ module.exports = function (app) {
         debugger;
         //console.log(JSON.parse(body));
         quote = JSON.parse(body);
-        
+
         //got the quote going... need to add the next part
 
         newsapi.v2.topHeadlines({
@@ -71,11 +71,12 @@ module.exports = function (app) {
           //console.log(response);
           response.articles.forEach(article => {
             var jsonTitle;
-            if(count!==3){
+            if(count!==1){
               jsonTitle = {
                 title: article.title
               }
-              titletrying+="<p>"+article.title+"</p>";
+
+              titletrying += article.title;
               //titles.push(jsonTitle);
               titles.push(titletrying);
               //console.log("added title: ");
@@ -89,9 +90,10 @@ module.exports = function (app) {
                 description: article.description,
                 url: article.url
               }
-              articlestrying+="<p>"+article.title+"</p>";
-              articlestrying+="<p>"+article.description+"</p>";
-              articlestrying+="<p>"+article.url+"</p>";
+              articlestrying+= article.title;
+              articlestrying+= article.description;
+              articlestrying+= article.url;
+              articlestrying+= "<br>";
               //articles.push(jsonArticle);
               articles.push(articlestrying);
               //console.log("added article: ");
@@ -99,10 +101,6 @@ module.exports = function (app) {
               count2++;
             }
           });
-
-
-
-
 
           db.users
           .findOne({
@@ -121,7 +119,6 @@ module.exports = function (app) {
               myUser.quotes = true;
             }
 
-
             console.log("User zipcode is: "+myUser.zipCode);
             // ****** Weather check
             weather.find({ search: myUser.zipCode, degreeType: "F" }, function(
@@ -132,7 +129,7 @@ module.exports = function (app) {
               // res.json(result);
               console.log("Weather result is: ");
               //console.log(result);
-              
+
               var weatherJson = {
                 temperature: result[0].current.temperature,
                 feelslike: result[0].current.feelslike,
@@ -157,16 +154,16 @@ module.exports = function (app) {
 
             });
 
-            
+
           })
 
 
 
 
         });
-        
-        
-        
+
+
+
 
 
 
