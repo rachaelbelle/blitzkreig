@@ -18,11 +18,6 @@ $(document).ready(function() {
       return;
     }
 
-    // if (currentUser does not exist), then...
-    //////message: "This account does not exist. Please try again, or create an account by clicking below."
-
-    // else if (currentUser exists), then...
-
     loginUser(currentUser.username, currentUser.password);
   }
 
