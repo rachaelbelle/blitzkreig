@@ -34,10 +34,10 @@ module.exports = function (app) {
     console.log(req.params.name);
 
     let quote;
-    let titles=[];
-    let titletrying="";
-    let articles=[];
-    let articlestrying="";
+    let titles = [];
+    let titletrying = "";
+    let articles = [];
+    let articlestrying = "";
 
     // $.get("/quote", {}
     // ).then( data => {
@@ -53,7 +53,7 @@ module.exports = function (app) {
         debugger;
         //console.log(JSON.parse(body));
         quote = JSON.parse(body);
-        
+
         //got the quote going... need to add the next part
 
         newsapi.v2.topHeadlines({
@@ -64,18 +64,18 @@ module.exports = function (app) {
         }).then(response => {
           //console.log(response);
 
-          let count=0;
-          let count2=0;
+          let count = 0;
+          let count2 = 0;
           //articles = response.articles;
           console.log("**********************");
-          console.log(response);
+          //console.log(response);
           response.articles.forEach(article => {
             var jsonTitle;
-            if(count!==3){
+            if (count !== 3) {
               jsonTitle = {
                 title: article.title
               }
-              titletrying+="<p>"+article.title+"</p>";
+              titletrying += "<p>" + article.title + "</p>";
               //titles.push(jsonTitle);
               titles.push(titletrying);
               //console.log("added title: ");
@@ -83,15 +83,15 @@ module.exports = function (app) {
               count++;
             }
             var jsonArticle;
-            if(count2!==10){
+            if (count2 !== 10) {
               jsonArticle = {
                 title: article.title,
                 description: article.description,
                 url: article.url
               }
-              articlestrying+="<p>"+article.title+"</p>";
-              articlestrying+="<p>"+article.description+"</p>";
-              articlestrying+="<p>"+article.url+"</p>";
+              articlestrying += "<p>" + article.title + "</p>";
+              articlestrying += "<p>" + article.description + "</p>";
+              articlestrying += "<p>" + article.url + "</p>";
               //articles.push(jsonArticle);
               articles.push(articlestrying);
               //console.log("added article: ");
@@ -101,82 +101,101 @@ module.exports = function (app) {
           });
 
           db.users
-          .findOne({
-            where: {
-              userName: req.params.name
-            }
-          })
-          .then(function (dbData) {
-            let myUser;
-            if( req.params.name == "guest" ) {
-              myUser = { id: 1,
-                firstName: 'guest',
-                lastName: 'guest',
-                userName: 'guest',
-                email: 'guest@guest.guest',
-                password: 'password',
-                zipCode: '08724',
-                weather: true,
-                news: true,
-                traffic: true,
-                quotes: true,
-                createdAt: '2019-06-13T04:32:06.000Z',
-                updatedAt: '2019-06-13T04:32:06.000Z' }
-            } else {
-              myUser = dbData.dataValues;
-            }
-            
-            console.log("My user passed is: ");
-            console.log(myUser);
-
-            console.log("User zipcode is: "+myUser.zipCode);
-            // ****** Weather check
-            weather.find({ search: myUser.zipCode, degreeType: "F" }, function(
-              err,
-              result
-            ) {
-              if (err) throw err;
-              // res.json(result);
-              console.log("Weather result is: ");
-              console.log(result);
-
-              var weatherJson = {
-                name: result[0].location.name,
-                zip: result[0].location.zipcode,
-                temperature: result[0].current.temperature,
-                feelslike: result[0].current.feelslike,
-                humidity: result[0].current.humidity,
-                sky: result[0].current.skytext,
-                wind: result[0].current.windspeed,
+            .findOne({
+              where: {
+                userName: req.params.name
+              }
+            })
+            .then(function (dbData) {
+              let myUser;
+              if (req.params.name == "guest") {
+                myUser = {
+                  id: 1,
+                  firstName: 'guest',
+                  lastName: 'guest',
+                  userName: 'guest',
+                  email: 'guest@guest.guest',
+                  password: 'password',
+                  zipCode: '08724',
+                  weather: true,
+                  news: true,
+                  traffic: true,
+                  quotes: true,
+                  createdAt: '2019-06-13T04:32:06.000Z',
+                  updatedAt: '2019-06-13T04:32:06.000Z'
+                }
+              } else {
+                myUser = dbData.dataValues;
               }
 
-              myUser.quote = quote;
-              // var hbsObject1 = {
-              //   titles: titles
-              // };
-              // var hbsObject2 = {
-              //   articles: articles
-              // };
-              myUser.titles = titletrying;
-              myUser.articles = articlestrying;
-              myUser.weatherDetails = weatherJson
-              console.log("sending my user: ");
-              console.log(myUser);
-              res.render("userProfile", myUser);
+              // console.log("My user passed is: ");
+              // console.log(myUser);
+
+              // console.log("User zipcode is: " + myUser.zipCode);
+              // ****** Weather check
+              weather.find({
+                search: myUser.zipCode,
+                degreeType: "F"
+              }, function (
+                err,
+                result
+              ) {
+                if (err) throw err;
+                // res.json(result);
+                //console.log("Weather result is: ");
+                //console.log(result);
+
+                var weatherJson = {
+                  name: result[0].location.name,
+                  zip: result[0].location.zipcode,
+                  temperature: result[0].current.temperature,
+                  feelslike: result[0].current.feelslike,
+                  humidity: result[0].current.humidity,
+                  sky: result[0].current.skytext,
+                  wind: result[0].current.windspeed,
+                }
+
+                googleMapsClient.geocode({
+                  address: "1600 Amphitheatre Parkway, Mountain View, CA"
+                },
+                function (err, response2) {
+                  if (err) console.log(err);
+                  console.log(response2);
+                  //res.send(response);
+
+                  let results = response2.results.
+
+                  myUser.quote = quote;
+                  // var hbsObject1 = {
+                  //   titles: titles
+                  // };
+                  // var hbsObject2 = {
+                  //   articles: articles
+                  // };
+                  myUser.titles = titletrying;
+                  myUser.articles = articlestrying;
+                  myUser.weatherDetails = weatherJson
+                  console.log("sending my user: ");
+                  console.log(myUser);
+                  res.render("userProfile", myUser);
+                }
+              );
 
 
-            });
 
-            
-          })
+
+              });
+
+
+            })
 
 
 
 
         });
-        
-        
-        
+
+
+
 
 
 
