@@ -7,20 +7,10 @@
         {{!-- <h3>Welcome <span class="member-name"></span></h3> --}}
         <h3>Welcome {{userName}}</span></h3>
 
-
-        {{log userName}}
-        {{log weather}}
-        {{log traffic}}
-        {{log news}}
-        {{log quotes}}
-        {{log zipCode}}
-        {{log quote}}
-
         <div class="col s9 offset-s3">
           {{#if weather}}
           {{> widgets/weather-block weatherDetails=weatherDetails}}
           {{/if}}
-
         </div>
 
         <div class="col s9 offset-s3">

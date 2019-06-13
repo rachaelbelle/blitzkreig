@@ -1,3 +1,4 @@
+
 $(document).ready(function() {
   console.log("/js/index.js document ready");
   var usernameInput = $("#username");
