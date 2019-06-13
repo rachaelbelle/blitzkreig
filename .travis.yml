@@ -3,6 +3,8 @@ node_js: '8'
 install:
   - npm i -g yarn mocha
   - yarn
+services:
+  - mysql
 branches:
   only:
   - master
@@ -10,6 +12,6 @@ cache:
   directories:
     - node_modules
 before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS testdb;'
+  - sudo mysql -e 'CREATE DATABASE IF NOT EXISTS testdb;'
   - sudo mysql -e 'CREATE USER blitz@localhost;'
   - sudo mysql -e 'GRANT ALL PRIVILEGES ON *.* TO blitz@localhost;'
