@@ -5,25 +5,37 @@ const Request = require("request");
 module.exports = app => {
   // Get all users
   app.get("/api/users", (req, res) => {
-    console.log("app get users");
+    console.log("apiRoutes.js In get /api/users");
     console.log(req.body);
-    db.users.findAll({}).then(result => {
+    let username;
+    if (req.body.username) {
+      username = req.body.username;
+    } else {
+      username = "test";
+    }
+    db.users.findOne({ where: { userName: username } }).then(result => {
+      console.log("Found user with username: " + username);
+      console.log("Returning result:");
+      console.log(result);
       res.json(result);
     });
   });
 
   app.get("/api/users/:userName", (req, res) => {
-
+    console.log("apiRoutes.js In get /api/users:username");
     console.log(req.params.userName);
 
-    db.users.findOne({where: {username:req.params.userName}}).then(result => {
-      res.json(result);
-    });
+    db.users
+      .findOne({ where: { username: req.params.userName } })
+      .then(result => {
+        res.json(result);
+      });
   });
 
   // Create a new user (for prefernces page)
   app.post("/api/users", function(req, res) {
-    console.log(req.body)
+    console.log("apiRoutes.js In post /api/users with body:");
+    console.log(req.body);
     db.users.create(req.body).then(function(dbExample) {
       res.json(dbExample);
     });
@@ -31,13 +43,16 @@ module.exports = app => {
 
   //get one user by username
   app.get("/api/users/:id", (req, res) => {
-    db.users.findAll({
-      where: {
-        username: req.params.Users.username
-      }
-    }).then(result => {
-      res.json(result);
-    });
+    console.log("apiRoutes.js In get /api/users/:id");
+    db.users
+      .findAll({
+        where: {
+          username: req.params.Users.username
+        }
+      })
+      .then(result => {
+        res.json(result);
+      });
   });
   app.post("api/users/:id", (req, res) => {
     db.users.findOne({}).then(result => {
@@ -67,7 +82,7 @@ module.exports = app => {
   });
   //================================================================= EXTERNAL API REQUESTS
   app.get("/quote", (req, res) => {
-  Request.get(
+    Request.get(
       "http://quotes.stormconsultancy.co.uk/random.json",
       (error, response, body) => {
         if (error) {
@@ -88,5 +103,4 @@ module.exports = app => {
         res.json(response);
       });
   });
-
 };
