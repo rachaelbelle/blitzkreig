@@ -76,6 +76,7 @@ module.exports = function (app) {
                 title: article.title
               }
               titletrying+="<p>"+article.title+"</p>";
+              titletrying+="</br>"
               //titles.push(jsonTitle);
               titles.push(titletrying);
               //console.log("added title: ");
@@ -89,9 +90,10 @@ module.exports = function (app) {
                 description: article.description,
                 url: article.url
               }
-              articlestrying+="<p>"+article.title+"</p>";
-              articlestrying+="<p>"+article.description+"</p>";
-              articlestrying+="<p>"+article.url+"</p>";
+              articlestrying+="<p class=\"bold\">Headline: <span class=\"skinny\">"+article.title+"</span></p>";
+              articlestrying+="<p class=\"bold\">Article: <span class=\"skinny\">"+article.description+"</p>";
+              articlestrying+="<p><a href=\""+article.url+"\" target=\”_blank\”>Visit the article!</a></p>";
+              articlestrying+="</br>"
               //articles.push(jsonArticle);
               articles.push(articlestrying);
               //console.log("added article: ");
@@ -138,13 +140,16 @@ module.exports = function (app) {
               if (err) throw err;
               // res.json(result);
               console.log("Weather result is: ");
-              //console.log(result);
+              console.log(result);
 
               var weatherJson = {
+                name: result[0].location.name,
+                zip: result[0].location.zipcode,
                 temperature: result[0].current.temperature,
                 feelslike: result[0].current.feelslike,
                 humidity: result[0].current.humidity,
                 sky: result[0].current.skytext,
+                wind: result[0].current.windspeed,
               }
 
               myUser.quote = quote;

@@ -47,10 +47,10 @@ $(document).ready(function() {
       email: emailInput.val().trim(),
       password: passwordInput.val().trim(),
       zipCode: zipCode.val().trim(),
-      weather: weatherCb,
-      news: newsCb,
-      traffic: trafficCb,
-      quotes: quotesCb
+      weather: true,
+      news: true,
+      traffic: true,
+      quotes: true
     };
     console.log("preference.js" + JSON.stringify(newUser));
 

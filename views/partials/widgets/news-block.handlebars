@@ -5,21 +5,19 @@
   <div class="card-content">
     <span class="card-title activator grey-text text-darken-4">NEWS<i class="material-icons right">Click for
         Info</i></span>
-    
+    <h6> {{{titles}}} </h6>
+    <br>
 
-    {{!-- {{#each titles}}
-      <p>{{title}}</p>
-    {{/each}} --}}
-    {{titles}}
+    {{log titles}}
   </div>
   <div class="card-reveal">
     <span class="card-title grey-text text-darken-4">NEWS<i class="material-icons right">close</i></span>
-    {{articles}}
-    {{!-- {{#each articles}}
-      <p>{{title}}</p>
-    {{/each}} --}}
+    {{!-- <p> {{articles}} </p>
+    <br> --}}
+    {{{articles}}}
+
   </div>
 </div>
 
-{{log titles}}
-{{log articles}}
+{{{log titles}}}
+{{{log articles}}}
