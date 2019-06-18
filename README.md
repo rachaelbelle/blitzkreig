@@ -19,13 +19,37 @@ The is a full stack application that is the Jack of All APPs. This app takes all
 <br>
 
 <kbd>
-  <img src="public/images/loginPage.png" width="220"/>
+  <img src="public/images/Blitzkreig.png" width="250" height="300"/>
 </kbd>
 
 <kbd>
-  <img src="public/images/signUp.png" width="200"/>
+  <img src="public/images/signupPage.png" width="200" height="300"/>
 </kbd>
 
+<kbd>
+  <img src="public/images/seigetheday.png" width="200" height="300"/>
+</kbd>
+
+
+## API's :
+
+* Google Maps
+* News API
+* Quotes:Storm
+* Weather-js
+
+## Libraries:
+* Materialize
+* Sequelize
+
+## Unit Testing:
+* Mocha
+* Chai
+
+## Future Improvements:
+* Login functionality using Passport to encrypt.
+* Add a 'Logout' function.
+* Add more widget options.
 
 
 [![Build Status](https://travis-ci.com/rachaelbelle/team1Project2.svg?branch=master)](https://travis-ci.com/rachaelbelle/team1Project2)

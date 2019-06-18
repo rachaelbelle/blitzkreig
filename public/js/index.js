@@ -1,13 +1,28 @@
+
 $(document).ready(function() {
+  console.log("/js/index.js document ready");
   var usernameInput = $("#username");
   var passwordInput = $("#password");
 
   $("#loginForm").on("submit", handleLogin);
 
+  // $("#submit").on("click", function() {
+  //   console.log("I got CLIIIIICKED!!!!!");
+  // });
+
   function handleLogin(event) {
+    console.log("index.js In handleLogin");
     event.preventDefault();
     console.log(usernameInput.val());
     console.log(passwordInput.val());
+    // this code will check to make sure all fields are filled out
+    if (!usernameInput.val() || !passwordInput.val()) {
+      //return;
+      console.log("usernameinput or passwordinput was empty");
+    }
+
+    //Now that we verified both fields were filled in, we need to check if the info entered exists in the database
+    //how do we loop through an api? i forget lol
 
     var currentUser = {
       username: usernameInput.val().trim(),
@@ -22,6 +37,7 @@ $(document).ready(function() {
   }
 
   function loginUser(username, password) {
+    console.log("index.js In loginUser");
     console.log(username + " ... " + password);
     debugger;
     $.post("/api/login", {

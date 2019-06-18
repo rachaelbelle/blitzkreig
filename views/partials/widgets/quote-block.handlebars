@@ -3,10 +3,12 @@
       <img class="activator" src="/images/quotes.png">
     </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">QUOTES<i class="material-icons right">Click for Info</i></span>
+      <span class="card-title activator grey-text text-darken-4">QUOTE<i class="material-icons right">Click for Info</i></span>
+      <p>{{quotes.quote}}</p>
     </div>
     <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">QUOTES<i class="material-icons right">close</i></span>
-      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+      <span class="card-title grey-text text-darken-4">Click for more info<i class="material-icons right">close</i></span>
+      <p>Your quote is: {{quotes.quote}}</p>
+      <p>Said/Written by: {{quotes.author}}</p>
     </div>
   </div>

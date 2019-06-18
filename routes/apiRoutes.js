@@ -9,80 +9,95 @@ const googleMapsClient = require("@google/maps").createClient({
 
 module.exports = app => {
   // Get all users
-  // app.get("/api/users", (req, res) => {
-  //   console.log("app get users");
-  //   console.log(req.body);
-  //   db.users.findAll({}).then(result => {
-  //     res.json(result);
-  //   });
-  // });
+  app.get("/api/users", (req, res) => {
+    console.log("apiRoutes.js In get /api/users");
+    console.log(req.body);
+    let username;
+    if (req.body.username) {
+      username = req.body.username;
+    } else {
+      username = "test";
+    }
+    db.users.findOne({ where: { userName: username } }).then(result => {
+      console.log("Found user with username: " + username);
+      console.log("Returning result:");
+      console.log(result);
+      res.json(result);
+    });
+  });
 
-  // //should get your info on login ...
-  // app.get("/api/users/:userName", (req, res) => {
-  //   console.log("aR 17: " + req.userName);
-  //   db.users
-  //     .findOne({
-  //       where: {
-  //         userName: req.params.userName
-  //       }
-  //     })
-  //     .then(result => {
-  //       res.json(result);
-  //     });
-  // });
+  app.get("/api/users/:userName", (req, res) => {
+    console.log("apiRoutes.js In get /api/users:username");
+    console.log(req.params.userName);
+
+    db.users
+      .findOne({ where: { username: req.params.userName } })
+      .then(result => {
+        res.json(result);
+      });
+  });
 
   // Create a new user (for prefernces page)
   app.post("/api/users", function(req, res) {
-    console.log("aR 30: " + JSON.stringify(req.body));
+    console.log("apiRoutes.js In post /api/users with body:");
+    console.log(req.body);
     db.users.create(req.body).then(function(dbExample) {
-      console.log("success - 33");
+      console.log("success creating user- user created is: ");
+      console.log("*************")
+      console.log(dbExample);
       res.json(dbExample);
     });
   });
 
   //get one user by username
-  // app.get("/api/users/:id", (req, res) => {
-  //   db.users
-  //     .findOne({
-  //       where: {
-  //         userName: req.params.users.userName
-  //       }
-  //     })
-  //     .then(result => {
-  //       res.json(result);
-  //     });
-  // });
-
-  //not needed?
-  // app.post("api/users/:id", (req, res) => {
-  //   db.users.findOne({}).then(result => {
-  //     res.json(result);
-  //   });
-  // });
-  //not needed?
-  // app.put("api/users/:id", (req, res) => {
-  //   db.users.findOne({}).then(result => {
-  //     res.json(result);
-  //   });
-  // });
-
+  app.get("/api/users/:id", (req, res) => {
+    console.log("apiRoutes.js In get /api/users/:id");
+    db.users
+      .findAll({
+        where: {
+          username: req.params.Users.username
+        }
+      })
+      .then(result => {
+        res.json(result);
+      });
+  });
+  app.post("api/users/:id", (req, res) => {
+    db.users.findOne({}).then(result => {
+      res.json(result);
+    });
+  });
+  app.put("api/users/:id", (req, res) => {
+    db.users.findOne({}).then(result => {
+      res.json(result);
+    });
+  });
+  
   app.post("/api/login", function(req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    console.log("success - 68");
-    res.json("/userProfile");
+    console.log("apiRoutes.js in post /api/login");
+    console.log(req.body);
+    res.json("/userProfile/"+req.body.userName);
+    //res.render("userProfile");
   });
 
   app.get("/api/user_data", function(req, res) {
+    console.log("apiRoutes.js  get /api/user_data");
+    //console.log(req);
     if (!req.user) {
       // The user is not logged in, send back an empty object
-      res.json({});
-      console.log("fail - 76");
+      console.log("user is not passed in req, creating guest user");
+      res.json({
+        userName: "guest",
+        id: 199
+      });
+      console.log("apiRoutes get /api/user_data fail getting user");
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      console.log("success - 80");
+      console.log("apiRoutes get /api/user_data got user");
       res.json({
         userName: req.user.userName,
         id: req.user.id
@@ -90,7 +105,7 @@ module.exports = app => {
     }
   });
 
-  // Delete an example by id, not needed
+  // DO NOT DELETE **** Needed for Travis Tests
   app.delete("/api/examples/:id", (req, res) => {
     db.Example.destroy({
       where: {
@@ -100,6 +115,21 @@ module.exports = app => {
       res.json(dbExample);
     });
   });
+
+  // DO NOT DELETE **** Needed for Travis Tests
+  app.get("/api/examples", function(req,res) {
+    db.Example.findAll({}).then(function(dbExample){
+      res.json(dbExample);
+    })
+  })
+
+  // DO NOT DELETE **** Needed for Travis Tests
+  app.post("/api/examples", function(req,res) {
+    db.Example.create(req.body).then(function(dbExample){
+      res.json(dbExample);
+    })
+  })
+
   //================================================================= EXTERNAL API REQUESTS
   app.get("/quote", (req, res) => {
     Request.get(
