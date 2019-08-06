@@ -5,36 +5,44 @@
         <h2 class="marker text-center"> Blitzkreig! Seige the Day! <img src="/images/tankProfileImg.png" alt="profile"
             class="profile"></h2>
         <h3 class="welcome">Welcome <span class="un">{{userName}} !</span></h3>
-
-        <div class="col s9 offset-s3">
-          {{#if weather}}
-          {{> widgets/weather-block weatherDetails=weatherDetails}}
-          {{/if}}
-        </div>
-
-        <div class="col s9 offset-s3">
-          {{#if traffic}}
-          {{> widgets/traffic-block zipCode=zipCode}}
-          {{/if}}
-        </div>
-
-        <div class="col s9 offset-s3">
-          {{#if news}}
-          {{> widgets/news-block titles=titles articles=articles}}
-          {{/if}}
-        </div>
-
-        <div class="col s9 offset-s3">
-          {{#if quotes}}
-          {{> widgets/quote-block quotes=quote}}
-          {{/if}}
-        </div>
-
-
       </div>
     </div>
+    <div class="row">
+      <div class="col s6 m6 l6">
+        {{#if weather}}
+        {{> widgets/weather-block weatherDetails=weatherDetails}}
+        {{/if}}
+      </div>
+
+      <div class="col s6 m6 l6">
+        {{#if traffic}}
+        {{> widgets/traffic-block zipCode=zipCode}}
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s6 m6 l6">
+        {{#if news}}
+        {{> widgets/news-block titles=titles articles=articles}}
+        {{/if}}
+      </div>
+
+      <div class="col s9 m6 l6">
+        {{#if quotes}}
+        {{> widgets/quote-block quotes=quote}}
+        {{/if}}
+      </div>
+
+
+
+    </div>
+
+
   </div>
+
 </div>
+
 
 <script src="/js/userProfile.js"></script>
 <script>
