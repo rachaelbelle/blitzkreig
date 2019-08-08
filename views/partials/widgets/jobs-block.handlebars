@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-image waves-effect waves-block waves-light">
+    <img class="activator" src="/images/jobs.jpg">
+  </div>
+  <div class="card-content">
+    <span class="card-title activator grey-text text-darken-4">JOBS<i class="material-icons right">Click for
+        Info</i></span>
+    <h6> {{{location}}} </h6>
+    <h6> {{{radius}}} </h6>
+    <h6> {{{totalResults}}} </h6>
+
+    <br>
+
+    {{log location}}
+    {{log radius}}
+    {{log totalResults}}
+
+  </div>
+  <div class="card-reveal">
+    <span class="card-title grey-text text-darken-4">JOBS<i class="material-icons right">close</i></span>
+
+    {{{results}}}
+
+  </div>
+</div>
+
+{{{log results}}}
