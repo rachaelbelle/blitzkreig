@@ -6,6 +6,8 @@ var weather = require("weather-js");
 const googleMapsClient = require("@google/maps").createClient({
   key: "AIzaSyA4GvQEVUhN2cbBZvQ1ObqGmRnup1mXPyA"
 });
+var unirest = require("unirest");
+var indeed = unirest("GET", "https://indeed-indeed.p.rapidapi.com/apisearch");
 
 module.exports = app => {
   // Get all users
@@ -178,27 +180,23 @@ module.exports = app => {
 };
 //Indeed API get resquest
 app.get("api/indeed", (req, res) => {
-  var unirest = require("unirest");
+  indeed.query({
+    "q": "java",
+    "v": "2",
+    "format": "json",
+    "radius": "25",
+    "l": "austin, tx"
+  });
 
-var req = unirest("GET", "https://indeed-indeed.p.rapidapi.com/apisearch");
-
-req.query({
-	"q": "java",
-	"v": "2",
-	"format": "json",
-	"radius": "25",
-	"l": "austin, tx"
-});
-
-req.headers({
-	"x-rapidapi-host": "indeed-indeed.p.rapidapi.com",
-	"x-rapidapi-key": "69b871417cmsh8336424e97429eap11795cjsn442e301c511e"
-});
+  indeed.headers({
+    "x-rapidapi-host": "indeed-indeed.p.rapidapi.com",
+    "x-rapidapi-key": "69b871417cmsh8336424e97429eap11795cjsn442e301c511e"
+  });
 
 
-req.end(function (res) {
-	if (res.error) throw new Error(res.error);
+  indeed.end(function (res) {
+    if (res.error) throw new Error(res.error);
 
-	console.log(res.body);
-});
+    console.log(res.body);
+  });
 })

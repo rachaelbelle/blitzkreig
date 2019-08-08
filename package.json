@@ -24,6 +24,7 @@
     "passport-local": "^1.0.0",
     "request": "^2.88.0",
     "sequelize": "^5.8.6",
+    "unirest": "^0.6.0",
     "weather-js": "^2.0.0"
   },
   "devDependencies": {
