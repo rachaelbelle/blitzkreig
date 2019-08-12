@@ -11,6 +11,7 @@ $(document).ready(function() {
   var newsCb = $("#newsCb").prop("checked");
   var trafficCb = $("#trafficCb").prop("checked");
   var quotesCb = $("#quotesCb").prop("checked");
+  var jobsCb = $("#quotesCb").prop("checked");
 
   console.log("In preferences.js");
   console.log(cmsForm);
@@ -50,7 +51,8 @@ $(document).ready(function() {
       weather: true,
       news: true,
       traffic: true,
-      quotes: true
+      quotes: true,
+      jobs: true
     };
     console.log("preference.js" + JSON.stringify(newUser));
 
