@@ -52,4 +52,4 @@ The is a full stack application that is the Jack of All APPs. This app takes all
 * Add more widget options.
 
 
-[![Build Status](https://travis-ci.com/rachaelbelle/team1Project2.svg?branch=master)](https://travis-ci.com/rachaelbelle/team1Project2)
+[![Build Status](https://travis-ci.com/rachaelbelle/blitzkreig.svg?branch=master)](https://travis-ci.com/rachaelbelle/blitzkreig)

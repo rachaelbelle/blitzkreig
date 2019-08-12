@@ -72,7 +72,7 @@ module.exports = app => {
       res.json(result);
     });
   });
-  
+
   app.post("/api/login", function(req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
@@ -146,8 +146,10 @@ module.exports = app => {
   app.get("/api/maps", (req, res) => {
     // Geocode an address.
     googleMapsClient.geocode(
-      {
-        address: "1600 Amphitheatre Parkway, Mountain View, CA"
+      {142 Lafayette Street
+        Newark, NJ
+        07105 United States
+        address: "142 Lafayette Street, Newark, NJ"
       },
       function(err, response) {
         if (err) console.log(err);
