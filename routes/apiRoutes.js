@@ -146,9 +146,7 @@ module.exports = app => {
   app.get("/api/maps", (req, res) => {
     // Geocode an address.
     googleMapsClient.geocode(
-      {142 Lafayette Street
-        Newark, NJ
-        07105 United States
+      {
         address: "142 Lafayette Street, Newark, NJ"
       },
       function(err, response) {
