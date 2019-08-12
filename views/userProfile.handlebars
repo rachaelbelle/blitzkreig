@@ -34,9 +34,23 @@
         {{/if}}
       </div>
 
+{{!-- new apps here  --}}
+{{!-- grocery and calendar --}}
 
+    {{!-- <div class="row">
+      <div class="col s6 m6 l6">
+        {{#if news}}
+        {{> widgets/news-block titles=titles articles=articles}}
+        {{/if}}
+      </div>
 
-    </div>
+      <div class="col s9 m6 l6">
+        {{#if quotes}}
+        {{> widgets/quote-block quotes=quote}}
+        {{/if}}
+      </div>
+
+    </div> --}}
 
 
   </div>
@@ -49,7 +63,7 @@
   function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 13,
-      center: { lat: 34.04924594193164, lng: -118.24104309082031 }
+      center: { lat: 40.730793, lng: -74.166783 }
     });
 
     var trafficLayer = new google.maps.TrafficLayer();
