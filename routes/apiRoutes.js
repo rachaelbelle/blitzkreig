@@ -176,3 +176,32 @@ module.exports = app => {
       });
   });
 };
+//Indeed API get resquest
+app.get("api/jobs", (req, res) => {
+var unirest = require("unirest");
+
+var req = unirest("GET", "https://indeed-indeed.p.rapidapi.com/apisearch");
+
+  Request.get(
+    "https://indeed-indeed.p.rapidapi.com/apisearch",
+  )
+  req.query({
+    "q": "java",
+    "v": "2",
+    "format": "json",
+    "radius": "25",
+    "l": "austin, tx"
+  });
+
+  req.headers({
+    "x-rapidapi-host": "indeed-indeed.p.rapidapi.com",
+    "x-rapidapi-key": "69b871417cmsh8336424e97429eap11795cjsn442e301c511e"
+  });
+
+
+  req.end(function (res) {
+    if (res.error) throw new Error(res.error);
+
+    console.log(res.body);
+  });
+})
