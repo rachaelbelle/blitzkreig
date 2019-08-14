@@ -11,7 +11,7 @@ $(document).ready(function() {
   var newsCb = $("#newsCb").prop("checked");
   var trafficCb = $("#trafficCb").prop("checked");
   var quotesCb = $("#quotesCb").prop("checked");
-  var jobsCb = $("#quotesCb").prop("checked");
+  var jobsCb = $("#jobsCb").prop("checked");
 
   console.log("In preferences.js");
   console.log(cmsForm);

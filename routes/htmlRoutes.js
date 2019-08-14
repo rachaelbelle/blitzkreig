@@ -38,6 +38,7 @@ module.exports = function (app) {
     let titletrying="";
     let articles=[];
     let articlestrying="";
+    let indeed;
 
     // $.get("/quote", {}
     // ).then( data => {
@@ -52,9 +53,20 @@ module.exports = function (app) {
         }
         debugger;
         //console.log(JSON.parse(body));
-        quote = JSON.parse(body);
-        
+          quote = JSON.parse(body);
+      }
+
         //got the quote going... need to add the next part
+
+        "https://indeed-indeed.p.rapidapi.com/apisearch",
+        (error, response, body) => {
+          if (error) {
+            indeed = "Error getting jobs... Sorry";
+          }
+          debugger;
+          //console.log(JSON.parse(body ));
+          indeed = JSON.parse(body);
+        }
 
         newsapi.v2.topHeadlines({
           // q: 'trump',
@@ -127,7 +139,7 @@ module.exports = function (app) {
             } else {
               myUser = dbData.dataValues;
             }
-            
+
             console.log("My user passed is: ");
             console.log(myUser);
 
@@ -169,18 +181,10 @@ module.exports = function (app) {
 
             });
 
-            
+
           })
 
-
-
-
         });
-        
-        
-        
-
-
 
       }
     )

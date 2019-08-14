@@ -3,6 +3,7 @@ const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("1b52f242b6544eddba125c9fb88612e1");
 const Request = require("request");
 var weather = require("weather-js");
+var unirest = require("unirest");
 const googleMapsClient = require("@google/maps").createClient({
   key: "AIzaSyA4GvQEVUhN2cbBZvQ1ObqGmRnup1mXPyA"
 });
@@ -175,33 +176,33 @@ module.exports = app => {
         res.json(response);
       });
   });
+  //Indeed API get resquest
+  app.get("api/jobs", (req, res) => {
+
+  var indeed = unirest("GET", "https://indeed-indeed.p.rapidapi.com/apisearch");
+
+    Request.get(
+      "https://indeed-indeed.p.rapidapi.com/apisearch",
+    )
+    indeed.query({
+      "q": "java",
+      "v": "2",
+      "format": "json",
+      "radius": "25",
+      "l": "austin, tx"
+    });
+
+    indeed.headers({
+      "x-rapidapi-host": "indeed-indeed.p.rapidapi.com",
+      "x-rapidapi-key": "69b871417cmsh8336424e97429eap11795cjsn442e301c511e"
+    });
+
+
+    req.end(function (res) {
+      if (res.error) throw new Error(res.error);
+
+      console.log(res.body);
+    });
+  })
+
 };
-//Indeed API get resquest
-app.get("api/jobs", (req, res) => {
-var unirest = require("unirest");
-
-var req = unirest("GET", "https://indeed-indeed.p.rapidapi.com/apisearch");
-
-  Request.get(
-    "https://indeed-indeed.p.rapidapi.com/apisearch",
-  )
-  req.query({
-    "q": "java",
-    "v": "2",
-    "format": "json",
-    "radius": "25",
-    "l": "austin, tx"
-  });
-
-  req.headers({
-    "x-rapidapi-host": "indeed-indeed.p.rapidapi.com",
-    "x-rapidapi-key": "69b871417cmsh8336424e97429eap11795cjsn442e301c511e"
-  });
-
-
-  req.end(function (res) {
-    if (res.error) throw new Error(res.error);
-
-    console.log(res.body);
-  });
-})
